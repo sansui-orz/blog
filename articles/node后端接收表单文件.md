@@ -12,6 +12,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' }); // 保存在当前目录下的uploads文件夹
+// 如果调用multer时，不传入文件夹名称，那么文件将不会写入磁盘，而是在内存中
 
 // file为表单中字段的属性名
 app.post('/img', upload.single('file'), (req, res) => {
@@ -36,13 +37,14 @@ const formidable = require('formidable');
 // file为表单中字段的属性名
 app.post('/img', (req, res) => {
     const form = new formidable.IncomingForm();
+    // 设置保存未知可以使用 form.uploadDir = "/my/dir";
     form.parse(req, function(err, fileds, files) {
         if (err) {
             res.json({
                 message: 'I lose it.'
             });
         } else {
-            console.log(files); // 此时文件应该是保存在内存中，但是我看到文件路径似乎在你安装node的文件夹中，所以我也不知道到底文件保存在哪里。
+            console.log(files);
             res.json({
                 message: 'I got it.'
             });
@@ -61,7 +63,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' }); // 保存在当前目录下的uploads文件夹
+const upload = multer();
 const COS = require('cos-nodejs-sdk-v5'); // 这个依赖另外安装
 const config = require('./config'); // 保存cos的敏感信息
 const fs = require('fs');
@@ -76,10 +78,10 @@ app.post('/img', upload.single('file'), (req, res) => {
         Bucket: config.bucket,
         Region: config.region,
         Key: 'node_upload/' + req.file.filename,
-        Body: fs.createReadStream(req.file.path)
+        Body: req.file.buffer
     }, (err, data) => {
-        // 上传之后最好删掉原图，以免占用服务器资源
-        fs.unlink(req.file.path, () => {});
+        // 上传之后最好清理掉文件引用，以免造成内存泄漏
+        req.file = undefined;
         if (err) {
             res.json({
                 message: 'I lose it.'
