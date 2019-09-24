@@ -6,3 +6,4 @@
 4. [类](./typescript/4-类.md)
 5. [函数](./typescript/5-函数.md)
 6. [泛型](./typescript/6-泛型.md)
+7. [枚举](./typescript/7-枚举.md)
