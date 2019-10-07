@@ -1,0 +1,33 @@
+2019-10-05 22:52:27,998 INFO 1772 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 20252007ms at 2019-10-06 04:30:00.004
+2019-10-05 22:52:27,998 INFO 1772 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 4052002ms at 2019-10-06 00:00:00.000
+2019-10-05 22:52:27,999 INFO 1772 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 4053002ms at 2019-10-06 00:00:01.001
+2019-10-05 22:52:27,882 INFO 1773 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2019-10-05 22:52:27,882 INFO 1773 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js
+2019-10-05 22:52:27,882 INFO 1773 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2019-10-05 22:52:50,828 INFO 1778 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2019-10-05 22:52:50,828 INFO 1778 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js
+2019-10-05 22:52:50,828 INFO 1778 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2019-10-05 23:04:12,533 INFO 2071 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2019-10-05 23:04:12,533 INFO 2071 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js
+2019-10-05 23:04:12,533 INFO 2071 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2019-10-05 23:04:12,637 INFO 2070 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 19547367ms at 2019-10-06 04:30:00.004
+2019-10-05 23:04:12,637 INFO 2070 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 3347363ms at 2019-10-06 00:00:00.000
+2019-10-05 23:04:12,638 INFO 2070 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 3348363ms at 2019-10-06 00:00:01.001
+2019-10-05 23:04:57,376 INFO 2073 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2019-10-05 23:04:57,376 INFO 2073 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js
+2019-10-05 23:04:57,376 INFO 2073 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2019-10-06 21:19:18,660 INFO 2545 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 25841345ms at 2019-10-07 04:30:00.005
+2019-10-06 21:19:18,660 INFO 2545 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 9641340ms at 2019-10-07 00:00:00.000
+2019-10-06 21:19:18,661 INFO 2545 [Timer] /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 9642339ms at 2019-10-07 00:00:01.000
+2019-10-06 21:19:18,432 INFO 2546 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2019-10-06 21:19:18,432 INFO 2546 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js
+2019-10-06 21:19:18,432 INFO 2546 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2019-10-06 21:19:55,997 INFO 2549 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2019-10-06 21:19:55,997 INFO 2549 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js
+2019-10-06 21:19:55,997 INFO 2549 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2019-10-06 21:21:33,485 INFO 2557 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2019-10-06 21:21:33,485 INFO 2557 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js
+2019-10-06 21:21:33,485 INFO 2557 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2019-10-06 21:22:20,999 INFO 2572 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2019-10-06 21:22:21,000 INFO 2572 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/clean_log.js
+2019-10-06 21:22:21,000 INFO 2572 [egg-schedule]: register schedule /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/app/schedule/rotate_by_file.js

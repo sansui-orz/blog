@@ -1,0 +1,65 @@
+2019-10-05 23:04:19,019 ERROR 2071 [-/::1/-/6ms GET /news] nodejs.AssertionError [ERR_ASSERTION]: Can't find new/list.tpl from /Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/app/view
+    at Map.resolve (/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view/lib/view_manager.js:74:5)
+    at <anonymous>
+generatedMessage: false
+name: "AssertionError [ERR_ASSERTION]"
+code: "ERR_ASSERTION"
+actual: undefined
+expected: true
+operator: "=="
+pid: 2071
+hostname: MaoshengdeMacBook-Air.local
+
+2019-10-06 21:19:23,887 ERROR 2546 [-/::1/-/147ms GET /news] nodejs.RequestError: getaddrinfo ENOTFOUND undefined undefined:80, GET http://undefined/topstories.json -1 (connected: false, keepalive socket: false, agent status: {"createSocketCount":1,"createSocketErrorCount":0,"closeSocketCount":0,"errorSocketCount":1,"timeoutSocketCount":0,"requestCount":0,"freeSockets":{},"sockets":{"undefined:80:":1},"requests":{}}, socketHandledRequests: 1, socketHandledResponses: 0)
+headers: {} (undefined)
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:95:26)
+code: "ENOTFOUND"
+errno: "ENOTFOUND"
+syscall: "getaddrinfo"
+hostname: "undefined"
+host: "undefined"
+port: 80
+name: "RequestError"
+data: undefined
+path: "/topstories.json?orderBy=%22%24key%22&startAt=%220%22&endAt=%224%22"
+status: -1
+headers: {}
+res: {"status":-1,"statusCode":-1,"statusMessage":null,"headers":{},"size":0,"aborted":false,"rt":130,"keepAliveSocket":false,"requestUrls":["http://undefined/topstories.json"],"timing":null,"remoteAddress":"","remotePort":"","socketHandledRequests":1,"socketHandledResponses":0}
+pid: 2546
+hostname: MaoshengdeMacBook-Air.local
+
+2019-10-06 21:20:05,761 ERROR 2549 [-/::1/-/5044ms GET /news] nodejs.ConnectionTimeoutError: Connect timeout for 5000ms, GET https://hacker-news.firebaseio.com/v0/topstories.json -2 (connected: false, keepalive socket: false, agent status: {"createSocketCount":1,"createSocketErrorCount":0,"closeSocketCount":1,"errorSocketCount":0,"timeoutSocketCount":0,"requestCount":0,"freeSockets":{},"sockets":{},"requests":{}}, socketHandledRequests: 1, socketHandledResponses: 0)
+headers: {}
+headers: {}
+    at Timeout._onTimeout (/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/urllib/lib/urllib.js:926:15)
+    at ontimeout (timers.js:488:11)
+    at tryOnTimeout (timers.js:323:5)
+    at Timer.listOnTimeout (timers.js:283:5)
+name: "ConnectionTimeoutError"
+requestId: 1
+data: undefined
+path: "/v0/topstories.json?orderBy=%22%24key%22&startAt=%220%22&endAt=%224%22"
+status: -2
+headers: {}
+res: {"status":-2,"statusCode":-2,"statusMessage":null,"headers":{},"size":0,"aborted":false,"rt":5030,"keepAliveSocket":false,"requestUrls":["https://hacker-news.firebaseio.com/v0/topstories.json"],"timing":null,"remoteAddress":"35.201.97.85","remotePort":"","socketHandledRequests":1,"socketHandledResponses":0}
+pid: 2549
+hostname: MaoshengdeMacBook-Air.local
+
+2019-10-06 21:20:33,621 ERROR 2549 [-/::1/-/5013ms GET /news] nodejs.ConnectionTimeoutError: Connect timeout for 5000ms, GET https://hacker-news.firebaseio.com/v0/topstories.json -2 (connected: false, keepalive socket: false, agent status: {"createSocketCount":2,"createSocketErrorCount":0,"closeSocketCount":2,"errorSocketCount":0,"timeoutSocketCount":0,"requestCount":0,"freeSockets":{},"sockets":{},"requests":{}}, socketHandledRequests: 1, socketHandledResponses: 0)
+headers: {}
+headers: {}
+    at Timeout._onTimeout (/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/urllib/lib/urllib.js:926:15)
+    at ontimeout (timers.js:488:11)
+    at tryOnTimeout (timers.js:323:5)
+    at Timer.listOnTimeout (timers.js:283:5)
+name: "ConnectionTimeoutError"
+requestId: 2
+data: undefined
+path: "/v0/topstories.json?orderBy=%22%24key%22&startAt=%220%22&endAt=%224%22"
+status: -2
+headers: {}
+res: {"status":-2,"statusCode":-2,"statusMessage":null,"headers":{},"size":0,"aborted":false,"rt":5010,"keepAliveSocket":false,"requestUrls":["https://hacker-news.firebaseio.com/v0/topstories.json"],"timing":null,"remoteAddress":"35.201.97.85","remotePort":"","socketHandledRequests":1,"socketHandledResponses":0}
+pid: 2549
+hostname: MaoshengdeMacBook-Air.local
+

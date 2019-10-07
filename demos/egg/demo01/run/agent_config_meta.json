@@ -1,0 +1,274 @@
+{
+  "keys": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/config/config.default.js",
+  "view": {
+    "defaultViewEngine": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/config/config.default.js",
+    "mapping": {
+      ".tpl": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/config/config.default.js"
+    },
+    "root": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view/config/config.default.js",
+    "cache": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view/config/config.local.js",
+    "defaultExtension": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view/config/config.default.js"
+  },
+  "news": {
+    "pageSize": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/config/config.default.js",
+    "serverUrl": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/config/config.default.js"
+  },
+  "session": {
+    "maxAge": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-session/config/config.default.js",
+    "key": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-session/config/config.default.js",
+    "httpOnly": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-session/config/config.default.js",
+    "encrypt": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-session/config/config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+    "protocolWhiteList": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+    "defaultMiddleware": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+    "csrf": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "type": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "ignoreJSON": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "useSession": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "cookieName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "sessionName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "headerName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "bodyName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "queryName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "refererWhiteList": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "xframe": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "hsts": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.local.js",
+      "maxAge": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "includeSubdomains": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "dta": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "noopen": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "nosniff": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "xssProtection": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "csp": {
+      "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "policy": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js",
+      "checkAddress": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-security/config/config.default.js"
+  },
+  "jsonp": {
+    "limit": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-jsonp/config/config.default.js",
+    "callback": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-jsonp/config/config.default.js",
+    "csrf": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-jsonp/config/config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-onerror/config/config.default.js",
+    "appErrorFilter": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-onerror/config/config.default.js",
+    "templatePath": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-onerror/config/config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-i18n/config/config.default.js",
+    "dirs": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-i18n/config/config.default.js",
+    "queryField": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-i18n/config/config.default.js",
+    "cookieField": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-i18n/config/config.default.js",
+    "cookieDomain": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-i18n/config/config.default.js",
+    "cookieMaxAge": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-i18n/config/config.default.js"
+  },
+  "watcher": {
+    "type": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-watcher/config/config.local.js",
+    "eventSources": {
+      "default": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-watcher/config/config.default.js",
+      "development": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-watcher/config/config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-schedule/config/config.default.js",
+      "file": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-schedule/config/config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-schedule/config/config.default.js"
+  },
+  "multipart": {
+    "mode": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "autoFields": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "defaultCharset": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "fieldNameSize": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "fieldSize": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "fields": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "fileSize": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "files": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "fileExtensions": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "whitelist": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "tmpdir": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js",
+    "cleanSchedule": {
+      "cron": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-multipart/config/config.default.js"
+    }
+  },
+  "development": {
+    "watchDirs": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-development/config/config.default.js",
+    "ignoreDirs": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-development/config/config.default.js",
+    "fastReady": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-development/config/config.default.js",
+    "reloadOnDebug": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-development/config/config.default.js",
+    "overrideDefault": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-development/config/config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/config/config.default.js",
+    "hourDelimiter": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/config/config.default.js",
+    "filesRotateBySize": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/config/config.default.js",
+    "maxFileSize": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/config/config.default.js",
+    "maxFiles": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/config/config.default.js",
+    "rotateDuration": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/config/config.default.js",
+    "maxDays": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-logrotator/config/config.default.js"
+  },
+  "static": {
+    "prefix": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-static/config/config.default.js",
+    "dir": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-static/config/config.default.js",
+    "dynamic": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-static/config/config.default.js",
+    "preload": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-static/config/config.default.js",
+    "buffer": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-static/config/config.default.js",
+    "maxFiles": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-static/config/config.default.js"
+  },
+  "nunjucks": {
+    "autoescape": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view-nunjucks/config/config.default.js",
+    "throwOnUndefined": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view-nunjucks/config/config.default.js",
+    "trimBlocks": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view-nunjucks/config/config.default.js",
+    "lstripBlocks": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view-nunjucks/config/config.default.js",
+    "cache": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg-view-nunjucks/config/config.local.js"
+  },
+  "env": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "name": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "proxy": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "maxProxyCount": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "protocolHeaders": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "ipHeaders": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "hostHeaders": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "pkg": {
+    "name": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "version": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "description": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "main": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "scripts": {
+      "dev": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+    },
+    "author": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "license": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "dependencies": {
+      "egg": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "egg-view-nunjucks": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+    },
+    "devDependencies": {
+      "egg-bin": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+    }
+  },
+  "baseDir": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "HOME": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "rundir": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "dump": {
+    "ignore": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "notFound": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "sitefile": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "middlewares": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "httpClient": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+  },
+  "bodyParser": {
+    "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "formLimit": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "jsonLimit": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "strict": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "queryString": {
+      "arrayLimit": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "depth": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "parameterLimit": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+    },
+    "onerror": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+  },
+  "logger": {
+    "dir": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "env": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "level": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "consoleLevel": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "disableConsoleAfterReady": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "outputJSON": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "buffer": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "appLogName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "coreLogName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "agentLogName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "errorLogName": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "coreLogger": {
+      "consoleLevel": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.local.js"
+    },
+    "allowDebugAtProd": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "dnsCacheLookupInterval": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "dnsCacheMaxLength": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "request": {
+      "timeout": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "freeSocketTimeout": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "freeSocketTimeout": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "logging": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+  },
+  "coreMiddleware": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "workerStartTimeout": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "serverTimeout": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "port": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+      "hostname": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js",
+    "responseTimeout": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+  },
+  "onClientError": "/Users/maoshengli/Documents/CODE/blog/demos/egg/demo01/node_modules/egg/config/config.default.js"
+}
