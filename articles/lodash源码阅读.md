@@ -18,7 +18,7 @@
   是否是类数组，或数组, 满足[], html集合, 字符串， （arguments应该也是类数组）
 
 - [x] isEmpty
-  1. 如果是类数组，判断数组长度，长度为0为空
+  1. 如果是类数组，判断数组长度，长度0为空
   2. 如果是map或者set，判断size, size0为空
   3. 如果入参是一个原型链(prototype)，则用Object.keys判断其长度
   4. 否则当作一个对象来判断, for in循环，如果hasOwnProperty则不为空
@@ -71,4 +71,30 @@
 - [x] before
   第一个参数为可以调用的次数，第二个参数为该调用的方法。超出调用次数后再次调用会返回最后调用的结果 (还没搞懂它的应用场景)
 
-- [ ]
+- [x] divide
+  求商，就是divide(6, 4)返回6/4 = 1.5。就只是做了一些兼容，如`divide(5. undefined) => 5`
+
+- [x] union
+  扁平化数组，并且去重
+  union([2, 3], [1, 2]) // => [2, 3, 1]
+
+- [x] eq
+  比较两个参数是否全等，这里比较特别的是对NaN做了比较，即`param1 !== param1 && param2 !== param2`也是成立全等的
+
+- [x] delay // (func, wait, ...args)
+  和上面的defer是一摸一样的，将传入函数做setTimeout的异步调用
+
+- [x] has // (obj, key)
+  底层直接调用hasOwnProperty,只是多了个object==null的兼容判断
+
+- [x] create // (prototype, properties)
+  底层调用Object.create。只是做了些兼容，第二个参数为新实例对象需要合并的属性
+
+- [x] escape // string => string
+  对传入string进行简单字符转换，只能转换`&<>"'`
+
+- [x] escapeRegExp: (string) => string
+  Escapes the `RegExp` special characters "^", "$", "\", ".", "*", "+", "?", "(", ")", "[", "]", "{", "}", and "|" in `string`
+
+- [x] cloneDeep // 深拷贝
+  
