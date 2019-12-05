@@ -98,3 +98,20 @@
 
 - [x] cloneDeep // 深拷贝
   
+- [x] add
+  顾名思义，就是传入两个参数，进行相加的操作，对传入数进行了安全的转换，如add(1, undefined) => 1
+
+- [x] countBy: (Array | Object, (item) => boolean) => Object<{ propname: number }>
+  遍历传入的数组或对象，计算出指定的值各有多少，并返回最终的计算值
+  例子：
+  ```javascript
+  const users = [
+    { 'user': 'barney', 'active': true },
+    { 'user': 'betty', 'active': true },
+    { 'user': 'fred', 'active': false }
+  ]
+ 
+  countBy(users, value => value.active);
+  // => { 'true': 2, 'false': 1 }
+  ```
+- []
