@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 200px;
+    min-height: 50px;
+    padding: 10px;
+}
+
+.main {
+    
+}
+
+li {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+}
+
+input {
+    min-width: auto;
+    width: auto;
+    flex-grow: 1;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+}
+
+label {
+    min-width: 4em;
+}
