@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "测试",
+    "version":"1.0.0.0",
+    "description": "描述",
+    "icons": {
+        "16": "imgs/icon_x_16.png",
+        "48": "imgs/icon_x_48.png",
+        "128": "imgs/icon_x_128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "imgs/icon_x_19.png",
+            "38": "imgs/icon_x_38.png"
+        },
+        "default_title": "test",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["js/content.js", "js/html2canvas.js", "js/2gif.js"]
+        }
+    ]
+}
