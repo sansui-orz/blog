@@ -1,0 +1,38 @@
+.transition-container {
+  height: 100vh;
+}
+
+.relative {
+  position: relative;
+  overflow: hidden;
+}
+
+.transition-head,
+.transition-body {
+  background: white;
+}
+
+.transition-head {
+  transition: all .5s;
+  transform-origin: 50%;
+}
+
+.transition-body {
+  height: 100vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: transform .5s;
+}
+
+.article {
+  line-height: 30px;
+  padding: 20px;
+}
+
+.item {
+  line-height: 100px;
+  text-align: center;
+  border-top: 1px solid black;
+}
