@@ -1,0 +1,16 @@
+获取事件的路径，即具体元素到window对象的路径
+假如:
+```html
+<html>
+    <body>
+        <button>click</button>
+    </body>
+</html>
+```
+```javascript
+document.querySelector('button').onclick = function(e) {
+    console.log(e); // [button, body, html, window]
+};
+```
+
+兼容性: chrome > 53, ie不支持, safari > 10, firefox > 52
