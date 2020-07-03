@@ -20,9 +20,9 @@
 5. 浏览器本身对sendBeacon的实现有问题：
 最后怀疑是浏览器本身对于sendBeacon的实现上与规范有差异，采用对比的方法测试了多款移动浏览器。 最终发现内部几个浏览器均出现sendBeacon发送异常，而chrome, qq浏览器并没有这个情况。
 将问题定位到浏览器实现上之后，向内核同学反馈了该情况。
-结论：sendBeacon在chrome低版本中，会对单个页面内通过sendBeacon发送的请求进行累积，累积发送数据达到64kb的时候，将不能在发送请求。这个bug在内核xx以上的版本上修复了这个问题。
+结论：sendBeacon在chrome低版本中，会对单个页面内通过sendBeacon发送的请求进行累积，累积发送数据达到64k（准确值是: 64 * 1024 = 65536）的时候，将不能在发送请求。这个bug在内核xx以上的版本上修复了这个问题。
 
-得到内核同学的这个结论后，xx查了相关文档：
+得到内核同学的这个结论后，查了相关文档：
 可见chrome的内核代码中确实有这么个限制：
 https://chromium.googlesource.com/chromium/blink/+/master/Source/modules/beacon/NavigatorBeacon.cpp#79
 https://chromium.googlesource.com/chromium/blink/+/master/Source/core/frame/Settings.in#290
@@ -34,15 +34,7 @@ https://w3c.github.io/beacon/
 > Compared to the alternatives, the sendBeacon() API does apply two restrictions: there is no callback method, and the payload size can be restricted by the user agent. Otherwise, the sendBeacon() API is not subject to any additional restrictions. The user agent ought not skip or throttle processing of sendBeacon() calls, as they can contain critical application state, events, and analytics data. Similarly, the user agent ought not disable sendBeacon() when in "private browsing" or equivalent mode, both to avoid breaking the application and to avoid leaking that the user is in such mode.
 
 
-得出结论后，其他前端同学又提出了几个问题：
-1. chrome低版本指的具体版本号：
-2. spa的项目是不是也是按照这个规则:
-
-查了一下资料得出结论：
-1. 
-2. 
-
-经过xx的提示，再看文档中的描述。很明显是我们对于sendBeacon的运用有误：
+很明显是我们对于sendBeacon的运用有误：
 sendBeacon适用于当页面卸载的时候发送一些打点请求，或者向服务器发送一些记录用户信息的内容，目的是用以解决当页面卸载时，通过xhr发送异步请求可能丢失的问题。
 并且sendBeacon对于是否成功将请求插入到待发送队列是有返回值的，成功为true, 失败为false。如果在非页面卸载的场景下使用sendBeacon，应该注意是否成功将请求插入，充分考虑失败的情况。而在之前，我们并没有注意到这一点。
 且尽管sendBeacon有返回值以判断是否成功调用，但对于该请求是否成功发送，以及发送时机，响应结果都无法得知，使用该api是应充分考虑到这一点。
@@ -63,6 +55,20 @@ https://chromium.googlesource.com/chromium/blink/+/master/Source/core/frame/Sett
 https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon
 https://w3c.github.io/beacon/
 https://web.dev/disallow-synchronous-xhr/
+https://github.com/w3c/beacon/pull/39
+https://stackoverflow.com/questions/28989640/navigator-sendbeacon-data-size-limits
 
 
+测试代码:
+var url = 'https://play.google.com/log?asds=ddecss';
+var n = 65536;
 
+function sendBeaconBySize(size) {
+    var data = new Array(size).join('X');
+    var result = navigator.sendBeacon(url, data);
+    if (result) {
+        console.log('发送成功', size);
+    } else {
+        console.log('发送失败', size);
+    }
+}
