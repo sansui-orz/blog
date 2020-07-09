@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>17. 生成圆形顶点的函数</title>
+</head>
+<body>
+  <script>
+    (function() {
+      /** 假设原点为0，0
+      * @param radius 球的半径
+      * @param divideByY 在Y轴层面上将球体分为几块
+      * @param divideByCircle 将y轴截面分为几段
+      */
+      function createSphere(radius, divideByY, divideByCircle) {
+        //（这里应该用角度来度量，因为一个圆的表面上的顶点应该是均匀分布的，如果使用y轴的大小来分层的话，那把圆翻个面，圆的表面看上去就不是均匀分布了）
+        var yUnitAngle = Math.PI / divideByY; // Y层，每层增加的单位角度
+        var angle = Math.PI / divideByCircle; // 切圆的每个三角形的角度
+        var positions = [];
+        positions.push([[0, -radius, 0]]);
+        for (var y = 1; y < divideByY; y++) { // 上下两个顶点不需要计算，因为只有一个点
+          var circle = [];
+          var yValue = radius * Math.sin(-(Math.PI / 2) + yUnitAngle * y); // 该层的圆的y轴坐标 -(Math.PI / 4)从底部开始算
+          var yRadius = radius * Math.cos(yUnitAngle * y); // 该层的圆的半径
+          for (var i = 0; i < divideByCircle; i++) {
+            var xValue = yRadius * Math.cos(i * angle); // 该顶点的x轴坐标
+            var zValue = yRadius * Math.sin(i * yRadius); // 该顶点的z轴坐标
+            circle.push([xValue, yValue, zValue]); // 将坐标丢进数组
+          }
+          positions.push(circle);
+        }
+        positions.push([[0, radius, 0]]);
+        // 全部顶点计算完毕
+
+        // 因为一个点存在多次复用，所以采用索引绘制的方式
+        var indices = [];
+        var points = []; // 存储散列的点坐标
+        var pointsCount = 2 + (positions.length - 2) * divideByCircle; // 顶点数，每层顶点个数+上下两个顶点
+        // 开始拼装顶点
+        // 处理底部顶点
+        points.push(0, -radius, 0);
+        for (var i = 0; i < divideByCircle - 1; i++) {
+          indices.push(0, i + 2, i + 1);
+          points.push(positions[1][i][0], -radius, positions[1][i][1]);
+        }
+        // 处理中间层
+        for (var i = 1; i < positions.length - 2; i++) {
+          for (var j = 0, len = positions[i].length; j < len; j++) {
+            var a = (i - 1) * 8 + (1 + j);
+            var b = (i - 1) * 8 + (2 + j);
+            var c = i * 8 + (2 + j);
+            var d = i * 8 + (1 + j);
+            indices.push(a, b, c, a, c, d);
+            if (positions[i + 1].length > 1) {
+              points.push(positions[i + 1][j][0], -radius, positions[i + 1][j][1]);
+            }
+          }
+        }
+        // 处理顶部顶点
+        for (var i = 0; i < divideByCircle - 1; i++) {
+          var index = (positions.length - 3) * divideByCircle + 1 + i;
+          indices.push(pointsCount - 1, index, index + 1);
+        }
+        points.push(0, radius, 0);
+        console.log(points, indices);
+      }
+      createSphere(1, 4, 8);
+    })();
+  </script>
+</body>
+</html>
