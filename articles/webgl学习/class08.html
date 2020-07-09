@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>WebGL-8.使用索引的方式绘制矩形</title>
 </head>
+
 <body>
   <canvas id="glcanvas" width="640" height="480"></canvas>
   <script type="shader-source" id="vertexShader">
@@ -83,7 +85,7 @@
     }
   </script>
   <script>
-    (function() {
+    (function () {
       var canvas = document.getElementById('glcanvas');
       var gl = canvas.getContext('webgl');
 
@@ -109,10 +111,10 @@
 
       //存储顶点信息的数组
       var points = [
-          30, 30, 255, 0, 0, 1,    //V0
-          30, 300, 255, 0, 0, 1,   //V1
-          300, 300, 255, 0, 0, 1,  //V2
-          300, 30, 0, 255, 0, 1    //V3
+        30, 30, 255, 0, 0, 1,    //V0
+        30, 300, 255, 0, 0, 1,   //V1
+        300, 300, 255, 0, 0, 1,  //V2
+        300, 30, 0, 255, 0, 1    //V3
       ];
       // 创建一个定位缓冲区
       var buffer = gl.createBuffer();
@@ -124,8 +126,8 @@
 
       //存储顶点索引的数组
       var indices = [
-          0, 1, 2, //第一个三角形
-          0, 2, 3  //第二个三角形
+        0, 1, 2, //第一个三角形
+        0, 2, 3  //第二个三角形
       ];
       // 创建一个索引缓冲区
       var indicesBuffer = gl.createBuffer();
@@ -133,7 +135,7 @@
       gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indicesBuffer);
       gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
       // 一个顶点占用6个元素，一个元素占用4个字节
-      
+
       function draw() {
         // 设置清空画布的颜色为黑色
         gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -151,4 +153,5 @@
     })();
   </script>
 </body>
+
 </html>

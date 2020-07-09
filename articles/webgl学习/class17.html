@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>17. 生成圆形顶点的函数</title>
 </head>
+
 <body>
   <script>
-    (function() {
+    (function () {
       /** 假设原点为0，0
       * @param radius 球的半径
       * @param divideByY 在Y轴层面上将球体分为几块
@@ -48,26 +50,27 @@
         // 处理中间层
         for (var i = 1; i < positions.length - 2; i++) {
           for (var j = 0, len = positions[i].length; j < len; j++) {
-            var a = (i - 1) * 8 + (1 + j);
-            var b = (i - 1) * 8 + (2 + j);
-            var c = i * 8 + (2 + j);
-            var d = i * 8 + (1 + j);
-            indices.push(a, b, c, a, c, d);
-            if (positions[i + 1].length > 1) {
+            var e = (j === divideByCircle - 1) ? (2 + j) % divideByCircle : (2 + j); // 到切面圆最后面一个点需要处理超出起点的点
+            var a = (i - 1) * 8 + (1 + j); // 组成的四边形的左下角点
+            var b = (i - 1) * 8 + e; // 组成的四边形的右下角点
+            var c = i * 8 + e; // 组成的四边形的右上角点
+            var d = i * 8 + (1 + j); // 组成的四边形的左上角点
+            indices.push(a, b, c, a, c, d); // 将四边形拆分成两个三角形然后丢进索引数组
+            if (positions[i + 1].length > 1) { // 如果不是最后面的那个切面圆，则将该切面圆的所有点都丢进点数组
               points.push(positions[i + 1][j][0], -radius, positions[i + 1][j][1]);
             }
           }
         }
         // 处理顶部顶点
-        for (var i = 0; i < divideByCircle - 1; i++) {
+        for (var i = 0; i < divideByCircle - 1; i++) { // 顶部的点单独处理，这里只有组成单三角形
           var index = (positions.length - 3) * divideByCircle + 1 + i;
           indices.push(pointsCount - 1, index, index + 1);
         }
-        points.push(0, radius, 0);
-        console.log(points, indices);
+        points.push(0, radius, 0); // 最后将顶点丢进去
       }
       createSphere(1, 4, 8);
     })();
   </script>
 </body>
+
 </html>
