@@ -42,10 +42,12 @@
         var pointsCount = 2 + (positions.length - 2) * divideByCircle; // 顶点数，每层顶点个数+上下两个顶点
         // 开始拼装顶点
         // 处理底部顶点
-        points.push(0, -radius, 0);
-        for (var i = 0; i < divideByCircle - 1; i++) {
-          indices.push(0, i + 2, i + 1);
-          points.push(positions[1][i][0], -radius, positions[1][i][1]);
+        for (var i = 0; i < divideByCircle; i++) {
+          var a = i + 2;
+          if (i === divideByCircle - 1) {
+            a = a % divideByCircle;
+          }
+          indices.push(0, a, i + 1);
         }
         // 处理中间层
         for (var i = 1; i < positions.length - 2; i++) {
@@ -56,17 +58,27 @@
             var c = i * 8 + e; // 组成的四边形的右上角点
             var d = i * 8 + (1 + j); // 组成的四边形的左上角点
             indices.push(a, b, c, a, c, d); // 将四边形拆分成两个三角形然后丢进索引数组
-            if (positions[i + 1].length > 1) { // 如果不是最后面的那个切面圆，则将该切面圆的所有点都丢进点数组
-              points.push(positions[i + 1][j][0], -radius, positions[i + 1][j][1]);
-            }
           }
         }
         // 处理顶部顶点
-        for (var i = 0; i < divideByCircle - 1; i++) { // 顶部的点单独处理，这里只有组成单三角形
+        for (var i = 0; i < divideByCircle; i++) { // 顶部的点单独处理，这里只有组成单三角形
           var index = (positions.length - 3) * divideByCircle + 1 + i;
-          indices.push(pointsCount - 1, index, index + 1);
+          var a = index + 1;
+          if (a === pointsCount - 1) {
+            a = pointsCount - 1 - divideByCircle;
+          }
+          indices.push(index, a, pointsCount - 1);
         }
-        points.push(0, radius, 0); // 最后将顶点丢进去
+
+        for (var i = 0; i < positions.length; i++) {
+          for (var j = 0; j < positions[i].length; j++) {
+            points = points.concat(positions[i][j], [255, 0, 0, 1]);
+          }
+        }
+        return {
+          points: points,
+          indices: indices,
+        };
       }
       createSphere(1, 4, 8);
     })();

@@ -25,6 +25,7 @@
     uniform mat4 u_Matrix;
     void main() {
       gl_Position = u_Matrix * vec4(a_Position, 1.0);
+      // gl_Position = vec4(a_Position, 1.0);
       // 透传颜色
       v_Color = a_Color;
     }
@@ -163,22 +164,22 @@
     }
     /** 生成一个球体的所有顶点坐标与索引，假设原点为0，0
       * @param radius 球的半径
-      * @param divideByY 在Y轴层面上将球体分为几块
-      * @param divideByCircle 将y轴截面分为几段
+      * @param divideByY 将球体水平分成多少份
+      * @param divideByCircle 将水平圆切面分成几分
       */
     function createSphere(radius, divideByY, divideByCircle) {
       //（这里应该用角度来度量，因为一个圆的表面上的顶点应该是均匀分布的，如果使用y轴的大小来分层的话，那把圆翻个面，圆的表面看上去就不是均匀分布了）
-      var yUnitAngle = Math.PI / divideByY; // Y层，每层增加的单位角度
-      var angle = Math.PI / divideByCircle; // 切圆的每个三角形的角度
+      var yUnitAngle = Math.PI / divideByY; // Y层，一层对应的夹角
+      var angle = (Math.PI * 2) / divideByCircle; // 切圆的每个三角形的角度
       var positions = [];
       positions.push([[0, -radius, 0]]);
       for (var y = 1; y < divideByY; y++) { // 上下两个顶点不需要计算，因为只有一个点
         var circle = [];
         var yValue = radius * Math.sin(-(Math.PI / 2) + yUnitAngle * y); // 该层的圆的y轴坐标 -(Math.PI / 4)从底部开始算
-        var yRadius = radius * Math.cos(yUnitAngle * y); // 该层的圆的半径
+        var yRadius = radius * Math.sin(yUnitAngle * y); // 该层切圆的半径
         for (var i = 0; i < divideByCircle; i++) {
           var xValue = yRadius * Math.cos(i * angle); // 该顶点的x轴坐标
-          var zValue = yRadius * Math.sin(i * yRadius); // 该顶点的z轴坐标
+          var zValue = yRadius * Math.sin(i * angle); // 该顶点的z轴坐标
           circle.push([xValue, yValue, zValue]); // 将坐标丢进数组
         }
         positions.push(circle);
@@ -201,12 +202,14 @@
       }
       // 处理中间层
       for (var i = 1; i < positions.length - 2; i++) {
+        var _ = [];
         for (var j = 0, len = positions[i].length; j < len; j++) {
           var e = (j === divideByCircle - 1) ? (2 + j) % divideByCircle : (2 + j); // 到切面圆最后面一个点需要处理超出起点的点
-          var a = (i - 1) * 8 + (1 + j); // 组成的四边形的左下角点
-          var b = (i - 1) * 8 + e; // 组成的四边形的右下角点
-          var c = i * 8 + e; // 组成的四边形的右上角点
-          var d = i * 8 + (1 + j); // 组成的四边形的左上角点
+          var a = (i - 1) * divideByCircle + (1 + j); // 组成的四边形的左下角点
+          var b = (i - 1) * divideByCircle + e; // 组成的四边形的右下角点
+          var c = i * divideByCircle + e; // 组成的四边形的右上角点
+          var d = i * divideByCircle + (1 + j); // 组成的四边形的左上角点
+          _.push([a, b, c, a, c, d]);
           indices.push(a, b, c, a, c, d); // 将四边形拆分成两个三角形然后丢进索引数组
         }
       }
@@ -219,10 +222,9 @@
         }
         indices.push(pointsCount - 1, index, a);
       }
-
       for (var i = 0; i < positions.length; i++) {
         for (var j = 0; j < positions[i].length; j++) {
-          points = points.concat(positions[i][j], [25, 25, 0, 1]);
+          points = points.concat(positions[i][j], getRandomColor());
         }
       }
       return {
@@ -255,8 +257,7 @@
       // 为顶点着色器传递canvas宽高
       gl.vertexAttrib2f(aScreenSize, canvas.width, canvas.height);
 
-      var infos = createSphere(0.5, 4, 8);
-      console.log(infos);
+      var infos = createSphere(1, 20, 20);
 
       var buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -287,8 +288,8 @@
       // 绘制三角形
       function draw() {
         angleX += 1;
-        angleY += 1.2;
-        //先绕 Y 轴旋转矩阵。
+        angleY += 2;
+        // 先绕 Y 轴旋转矩阵。
         rotationY(deg2radians(angleY), dstMatrix);
         //再绕 X 轴旋转
         multiply(dstMatrix, rotationX(deg2radians(angleX), tmpMatrix), dstMatrix);
@@ -305,7 +306,7 @@
          * @param offset 偏移量
          **/
         gl.drawElements(gl.TRIANGLES, infos.indices.length, gl.UNSIGNED_SHORT, 0);
-        // requestAnimationFrame(draw);
+        requestAnimationFrame(draw);
       }
       draw();
     })();
