@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SharedWorker</title>
+</head>
+<body>
+  <ul>
+    <li>test1</li>
+    <li>test2</li>
+    <li>test3</li>
+    <li>test4</li>
+  </ul>
+  <script>
+    var list = [false, false, false, false];
+    var lis = document.querySelectorAll('li');
+    var myWorker = new SharedWorker('http://localhost:8080/demos/sharedWorker/shared.js?s=');
+    myWorker.port.onmessage = function(e) {
+      console.log('e', e.data);
+      var index = e.data[0];
+      var value = e.data[1];
+      list[index] = value;
+      update();
+    };
+    myWorker.port.start();
+    function update() {
+      list.forEach(function(bool, index) {
+        lis[index].style.backgroundColor = bool ? '#ff0000' : '#fff';
+      });
+    }
+    lis.forEach(function(li, index) {
+      li.addEventListener('click', function() {
+        myWorker.port.postMessage([index, !list[index]]);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>localStorage</title>
+</head>
+<body>
+  <ul>
+    <li>test1</li>
+    <li>test2</li>
+    <li>test3</li>
+    <li>test4</li>
+  </ul>
+  <script>
+    var list = [false, false, false, false];
+    var lis = document.querySelectorAll('li');
+    function update() {
+      list.forEach(function(bool, index) {
+        lis[index].style.backgroundColor = bool ? '#ff0000' : '#fff';
+      });
+    }
+    lis.forEach(function(li, index) {
+      li.addEventListener('click', function() {
+        list[index] = !list[index];
+        update();
+        localStorage.setItem('list', list.join());
+      });
+    });
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'list') {
+        try {
+          list = e.newValue.split(',').map(function(item) {
+            return item === 'true';
+          });
+          update();
+        } catch(err) {}
+      }
+    });
+  </script>
+</body>
+</html>
