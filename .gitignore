@@ -2,5 +2,6 @@
 node_modules/
 demos/*/node_modules/
 demos/*/npm-debug.log
+demos/*/*/__snapshots__
 */node_modules/
 npm-debug.log

@@ -1,0 +1,26 @@
+.item {
+  line-height: 40px;
+  padding-left: 20px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.checked {
+  background: red;
+}
+
+.delete {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  transform: translateY(-50%);
+  line-height: 16px;
+  font-size: 12px;
+}

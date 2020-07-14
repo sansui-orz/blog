@@ -1,0 +1,24 @@
+.add {
+  margin-bottom: 20px;
+}
+
+.add-input {
+  width: 80%;
+  height: 40px;
+  border: none;
+  padding: 0;
+  background: #efefef;
+}
+
+.add-btn {
+  width: 20%;
+  height: 40px;
+  border: none;
+  padding: 0;
+  background: #ccc;
+}
+
+img {
+  width: 10px;
+  height: 10px;
+}
