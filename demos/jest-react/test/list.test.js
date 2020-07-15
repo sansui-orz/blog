@@ -39,6 +39,17 @@ describe('list 组件测试', () => {
     button.simulate('click'); // 点击
     expect(wrapper.find('Item').length).toBe(1); // 有一个Item组件
     expect(wrapper.state('list').length).toBe(1); // 数组里面有一项
+
+    // 再次点击，这时候不应该增加数组长度
+    button.simulate('click');
+    expect(wrapper.find('Item').length).toBe(1); // 有一个Item组件
+    expect(wrapper.state('list').length).toBe(1); // 数组里面有一项
+  });
+
+  it('点击操作', () => {
+    wrapper.find('.item').at(0).simulate('click');
+    expect(wrapper.find('.item').at(0).hasClass('checked')).toBe(true);
+    expect(wrapper.instance().state.list[0].complete).toBe(true);
   });
 
   it('删除操作', () => {

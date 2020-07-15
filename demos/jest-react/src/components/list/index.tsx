@@ -74,6 +74,7 @@ export default class List extends Component<{}, IState> {
       });
       this.setState({ list });
       this.inputRef.current && (this.inputRef.current.value = '');
+      this.inputValue = '';
     }
   }
 
@@ -81,6 +82,7 @@ export default class List extends Component<{}, IState> {
     this.inputValue = e.target.value;
   };
 
+  /** 测试时使用 */
   private test = (a: number, b: number) => {
     return a + b * this.state.list.length;
   };

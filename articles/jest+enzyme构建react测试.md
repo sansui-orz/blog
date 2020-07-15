@@ -28,7 +28,7 @@ module.exports = {
   testRegex: '.*\\.test\\.js$', // 正则表示的测试文件，测试文件的格式为xxx.test.js
   collectCoverage: false, // 是否生成测试覆盖报告，如果开启，会增加测试的时间
   collectCoverageFrom: [ // 生成测试覆盖报告时检测的覆盖文件
-    'src/components/**/*.{tsx}',
+    '<rootDir>/src/components/**/*.tsx',
   ],
   moduleNameMapper: { // 代表需要被Mock的资源名称
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
@@ -69,7 +69,7 @@ const props = { // item需要的props
   deleteItem: jest.fn(),
 };
 
-it('item renders correctly', () => { // 该测试用例仅仅用来验证item是否正确的渲染
+it('item renders correctly', () => { // 生成快照，之后每次组件更新都会跟快照diff出变化 更新快照文件使用npm run test -- -u
   const tree = renderer.create(
     <Item {...props} />
   ).toJSON();
@@ -236,6 +236,21 @@ describe('异步函数测试', () => {
     });
   });
 ```
+
+### 测试覆盖率
+jest的测试覆盖率的配置十分简单，只需要在test.config.js里面把`collectCoverage`设置为true, 同时设置`collectCoverageFrom`包含需要测试的文件。
+
+然后在package.json的scripts脚本加上`--coverage`
+
+如：`jest --colors --coverage --config test.config.js`
+
+`--colors`属性可以让覆盖率对于不同的覆盖率用颜色标明
+
+最终运行代码就会生成如下的覆盖率报告了。
+
+![覆盖率报告](./imgs/20200715104254.jpg)
+
+THE END.
 
 参考资料：
 [使用Jest进行React单元测试](https://juejin.im/post/5b6c39bde51d45195c079d62#heading-28)
