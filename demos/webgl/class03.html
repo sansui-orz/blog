@@ -120,6 +120,11 @@
       // 将aPosition属性的获取指向缓冲区
       gl.vertexAttribPointer(aPosition, size, type, normalize, stride, offset);
 
+      // 设置清空画布的颜色为黑色
+      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      // 用上一步设置的颜色清空画布
+      gl.clear(gl.COLOR_BUFFER_BIT);
+
       // 绘制图像的类型，从顶点数组的哪个位置开始绘制，绘制几次
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     })();

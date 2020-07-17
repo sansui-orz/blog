@@ -220,7 +220,7 @@
         // 用上一步设置的颜色清空画布
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLES, 0, points.length / 7);
-        // requestAnimationFrame(draw);
+        requestAnimationFrame(draw);
       }
       draw();
     })();
