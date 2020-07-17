@@ -11,4 +11,4 @@
 10. [sendBeacon了解一下](./articles/零碎/sendBeacon了解一下.md);
 11. [跨页面通信](./articles/多个tab页之间通信.md);
 12. [一起来学webgl](./articles/webgl);
-13. [jest+enzyme构建react测试](./article/jest+enzyme构建react测试.md);
+13. [jest+enzyme构建react测试](../article/jest+enzyme构建react测试.md);
