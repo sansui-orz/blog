@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component<{}, { list: number[]; }> {
   state = {
-    list: [0, 1, 2, 3, 4],
+    list: [0, 1, 2, 3, 4, 21],
   };
 
   render() {
     return (
-      <div>123456789
+      <div>1234567810
         <Link to="/about">about</Link>
         <ul>
           {this.state.list.map((index) => {

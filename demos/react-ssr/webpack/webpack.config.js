@@ -1,5 +1,4 @@
 const { merge } = require('webpack-merge');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const serverConfig = require('./webpack.server.js');
 const clientConfig = require('./webpack.client.js');
 
@@ -32,12 +31,9 @@ const commonConfig = {
   },
 };
 
-module.exports = (env, argv) => {
-  const _clientConfig = clientConfig(env, argv);
-  return [
-    merge(commonConfig, _clientConfig),
-    merge(commonConfig, serverConfig),
-  ];
-};
+module.exports = [
+  merge(commonConfig, clientConfig),
+  merge(commonConfig, serverConfig),
+];
 
 

@@ -1,9 +1,11 @@
 const path = require('path');
+const ENV = process.env.NODE_ENV;
+const entry = path.resolve(__dirname, '../web/render/serverRender.tsx');
 
 const serverConfig = {
   target: 'node',
   entry: {
-    home: path.resolve(__dirname, '../web/render/serverRender.tsx'),
+    home: [entry],// ENV === 'production' ? entry : [entry, 'webpack-hot-middleware/client'],
   },
   output: {
     filename: '[name].js',
@@ -27,11 +29,6 @@ const serverConfig = {
       },
     ]
   },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all'
-  //   }
-  // }
 };
 
 module.exports = serverConfig;

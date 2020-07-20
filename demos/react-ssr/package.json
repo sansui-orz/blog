@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --open --config webpack/webpack.config.js",
     "build": "webpack --mode=production --config webpack/webpack.config.js",
-    "server": "ts-node index.ts"
+    "start": "cross-env NODE_ENV=development ts-node index.ts"
   },
   "author": "maosheng",
   "license": "ISC",
@@ -37,10 +36,12 @@
     "babel-plugin-import": "^1.13.0",
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.6.0",
     "html-webpack-plugin": "^4.3.0",
     "koa-nunjucks-2": "^3.0.2",
     "koa-static": "^5.0.0",
+    "koa-webpack": "^5.3.0",
     "less-loader": "^6.2.0",
     "postcss-loader": "^3.0.0",
     "ts-loader": "^8.0.1",
@@ -48,7 +49,7 @@
     "typescript": "^3.9.6",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-hot-middleware": "^2.25.0",
     "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^5.0.9"
   }

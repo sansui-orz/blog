@@ -13,6 +13,6 @@ function ClientRender() {
 
 ReactDOM.hydrate(<ClientRender />, document.getElementById('app'));
 
-if (module.hot) { // 如果报nodeModule上不存在 hot 则安装 @types/webpack-env
+if (module.hot) {
   module.hot.accept();
 }

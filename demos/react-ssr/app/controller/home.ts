@@ -4,7 +4,6 @@ const ReactDOMServer = require('react-dom/server');
 const manifest = require('../../build/client/manifest.json');
 
 exports.renderHome = (ctx) => {
-  // ctx.body = 'home page.';
   const dom = require(path.resolve(__dirname, '../../build/server/home.js')).default;
   const element = React.createElement(dom({url: '/'}));
   ctx.render('index', {
