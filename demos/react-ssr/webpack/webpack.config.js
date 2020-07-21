@@ -31,9 +31,9 @@ const commonConfig = {
   },
 };
 
-module.exports = [
+const config = [
   merge(commonConfig, clientConfig),
   merge(commonConfig, serverConfig),
 ];
-
+export default config;
 

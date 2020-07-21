@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component<{}, { list: number[]; }> {
   state = {
-    list: [0, 1, 2, 3, 4, 21],
+    list: [0, 1, 2, 3, 4, 121],
   };
 
   render() {

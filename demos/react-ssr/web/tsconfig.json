@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es5",      
+    "module": "esnext",
+    "sourceMap": true,
+    "lib": [
+      "es6",
+      "dom",
+      "es2017",
+      "esnext"
+    ]
+  },
+  "include": [
+    "./**/*.tsx",
+    "./**/*.ts"
+  ]
+}

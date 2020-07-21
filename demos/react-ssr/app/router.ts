@@ -1,7 +1,9 @@
-const home = require('./controller/home');
+import renderHome from './controller/home';
+import renderAbout from './controller/about';
 
-module.exports = (router) => {
-  router.get('/', home.renderHome);
+export default function Router(router) {
+  router.get('/', renderHome);
+  router.get('/about', renderAbout);
   router.get('/v2', (ctx) => {
     ctx.body = 'home';
   });

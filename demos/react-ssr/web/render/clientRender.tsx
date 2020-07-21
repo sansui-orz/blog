@@ -8,7 +8,7 @@ function ClientRender() {
     <BrowserRouter>
       <Router />
     </BrowserRouter>
-  )
+  );
 }
 
 ReactDOM.hydrate(<ClientRender />, document.getElementById('app'));

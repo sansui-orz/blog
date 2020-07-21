@@ -1,15 +1,19 @@
 {
   "compilerOptions": {
-    "outDir": "./build/",
-    "module": "es6",
-    "target": "es5",
+    "module": "commonjs",
+    "target": "es2017",
     "jsx": "react",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "moduleResolution": "node",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "resolveJsonModule": true
   },
+  "include": [
+    "app/*.ts",
+    "app/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
