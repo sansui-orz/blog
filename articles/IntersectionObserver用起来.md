@@ -1,3 +1,5 @@
+# IntersectionObserver
+
 在很多场景下，我们经常会做元素曝光计算。
 
 而js在这方面的表现比较乏力。
@@ -13,6 +15,7 @@
 Intersection Observer是一个构造器，它可以创建并返回一个IntersectionObserver对象。
 
 简单的使用语法如下:
+
 ```javascript
 const observer = new IntersectionObserver((entries, observer) => {}, { // 配置可选
     root: HTMLElement, // 根元素, 不提供则默认文档根元素
@@ -25,7 +28,9 @@ observer.observe(HTMLElement);
 ```
 
 ok. 它的用法非常简单，接下来是我写的一个在react中的简单demo：
+
 ***list.jsx***
+
 ```javascript
 import React from 'react';
 import Item from './item';
@@ -81,6 +86,7 @@ export default class _IntersectionObserver extends React.Component {
 ```
 
 ***list.css***
+
 ```css
 .item {
     line-height: 100px;
@@ -97,6 +103,7 @@ export default class _IntersectionObserver extends React.Component {
 ```
 
 ***item.jsx***
+
 ```javascript
 import React from 'react';
 
@@ -112,11 +119,17 @@ export default class Item extends React.Component {
 ```
 
 如果你运行起来，你就会发现，确实非常的方便，并不需要自己写多少的代码。
+
 当然，兼容问题还是要有的。can i use表示ie不支持，chrome51以上，QQ浏览器不支持，安卓5.6以上，ios12.2以上。
+
 这个兼容情况确实不容乐观。
+
 不过这个方法是在线程空闲的时候才调用的，如果这样的话，它的优先级就是最低的。
+
 那问题还是有点严重。毕竟谁无法接受突然它停止工作吧。
 
-参考资料:
+## 参考资料
+
 [阮一峰老师](https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html)
+
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)

@@ -107,6 +107,9 @@ prefetch会以最低的优先级去下载资源，它下载完成的时机是无
 ## 参考链接
 
 [Optimizing Performance With Resource Hints](https://www.smashingmagazine.com/2019/04/optimization-performance-resource-hints/)
+
 [Resource Hints "W3C Working Draft 02 July 2019"](https://www.w3.org/TR/resource-hints/)
+
 [preload](https://www.w3.org/TR/preload/)
+
 [通过rel="preload"进行内容预加载](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Preloading_content)
