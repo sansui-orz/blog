@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    "**/*.meta": true
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false
+}
