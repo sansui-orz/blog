@@ -44,6 +44,8 @@
 
 21. [js大整数运算](./articles/js大整数运算.md)
 
+22. [web-component入门](./articles/欢迎web-component到来.md)
+
 ## 零碎记录
 
 1. [零碎记录](./articles/零碎)

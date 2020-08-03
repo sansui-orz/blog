@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>web component</title>
+  <style>
+    img, .img {
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <template id="user-info">
+    <img src="https://semantic-ui.com/images/avatar2/large/kristy.png" />
+    <p class="username"><slot name="user-name">程序员</slot></p>
+  </template>
+  <user-info>
+    <span slot="user-name">帅气程序员</span>
+  </user-info>
+  <user-card username="???" avatar="https://semantic-ui.com/images/avatar2/large/kristy.png"></user-card>
+  <user-card  username="123???" avatar="https://semantic-ui.com/images/avatar2/large/kristy.png"></user-card>
+  <script>
+    class UserCard extends HTMLElement {
+      constructor() {
+        super();
+        // const templateElement = document.querySelector('#user-card');
+        // const content = templateElement.content.cloneNode(true);
+        // this.appendChild(content);
+        // const fragment = document.createDocumentFragment();
+        // const div = document.createElement('div');
+        this.innerHTML = this.render();
+        const shadow = this.attachShadow({ mode: 'open' });
+        // this.appendChild(div);
+        // let shadowRoot = this.attachShadow({mode: 'open'});
+        // shadowRoot.innerHTML = this.render();
+        // console.log(this.getAttribute('name'));
+      }
+
+      static get observedAttributes() {
+        return ['avatar', 'username'];
+      }
+
+      get avatar() {
+        return this.getAttribute('avatar');
+      }
+
+      set avatar(src) {
+        this.querySelector('img').setAttribute('src', src);
+      }
+
+      get username() {
+        return this.getAttribute('username');
+      }
+
+      set username(name) {
+        return this.querySelector('.username').innerText = name;
+      }
+
+      content
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue) {
+          this[name] = newValue;
+        }
+      }
+
+      render() {
+        const avatar = this.avatar;
+        const username = this.username;
+        return `
+          <img src="${avatar}" />
+          <p class="username">${username}</p>
+        `;
+      }
+    }
+    window.customElements.define('user-card', UserCard);
+
+    class UserInfo extends HTMLElement {
+      constructor() {
+        super();
+        const temp = document.getElementById('user-info');
+        const content = temp.content.cloneNode(true);
+        const shadow = this.attachShadow({ mode: 'open' });
+        shadow.appendChild(content);
+        // this.appendChild(content);
+      }
+    }
+    window.customElements.define('user-info', UserInfo);
+  </script>
+</body>
+</html>
