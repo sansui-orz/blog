@@ -96,7 +96,7 @@ window.customElements.define('user-info', UserInfo);
 
 使用了Shadow DOM之后再看dom结构是这样的
 
-![shadow](20200803174033.jpg)
+![shadow](./imgs/20200803174033.jpg)
 
 并且你会发现img的样式不起效了，这是因为Shadow DOM中的任何DOM都不会影响到DOM树，相应的也无法应用到外部样式（这点存疑，我在 chrome上测试确实无法使用外部样式）。
 
