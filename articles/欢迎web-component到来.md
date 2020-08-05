@@ -45,7 +45,7 @@ window.customElements.define('user-info', UserInfo);
 
 ## 使用template
 
-除了直接使用字符串类型的文档定义，还可以使用`template`便签。template标签的优势在于其相对于字符串，或者通过api创建节点更加符合前端们对于编写html的习惯，并且template内容的解析是在DOM解析的时候，解析完会驻留用于后续的自定义节点。
+除了直接使用字符串类型的文档定义，还可以使用`template`标签。template标签的优势在于其相对于字符串，或者通过api创建节点更加符合前端们对于编写html的习惯，并且template内容的解析是在DOM解析的时候，解析完会驻留用于后续的自定义节点。
 
 ```html
 <body>
