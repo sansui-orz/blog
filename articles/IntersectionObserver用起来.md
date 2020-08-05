@@ -104,7 +104,7 @@ export default class _IntersectionObserver extends React.Component {
 
 ***item.jsx***
 
-```javascript
+```jsx
 import React from 'react';
 
 export default class Item extends React.Component {
