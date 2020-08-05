@@ -112,8 +112,8 @@ export default class Item extends React.Component {
 
     render() {
         const props = this.props;
-        const color = `${props.it}`.substr(2, 6);
-        return <div ref={ref => this.ref = ref} className="item" style={{background: `#${color}`}}>{props.index}</div>;
+        const color = '#' + `${props.it}`.substr(2, 6);
+        return <div ref={ref => this.ref = ref} className="item" style={{background: color,}}>{props.index}</div>;
     }
 }
 ```
