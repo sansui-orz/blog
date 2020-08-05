@@ -12,7 +12,7 @@
 
 - [图片优化实践](./articles/图片优化实践.md)
 
-- [Resource Hints介绍](./articles/Resource%20Hints介绍.md)
+- [Resource Hints介绍](./articles/ResourceHints介绍.md)
 
 - [react服务端渲染搭建](./articles/react服务端渲染项目搭建.md)
 
