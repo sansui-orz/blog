@@ -1,6 +1,11 @@
-[最终效果](http://jsrun.pro/iFWKp/edit);
+# 纯css实现loading动画
 
-啥也不说了，直接上代码:
+![效果](./imgs/20200805151032.jpg)
+
+[源码](../demos/loading.html)
+
+代码:
+
 ```html
 <div class="box">
     <div class="loading">
@@ -194,3 +199,7 @@
   }
 }
 ```
+
+1. 采用css变量
+
+2. loading动画两头采用圆形伪类元素实现

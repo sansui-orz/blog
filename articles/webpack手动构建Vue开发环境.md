@@ -1,3 +1,5 @@
+# webpack手动构建Vue开发环境
+
 *当然，还是建议照着官方文档来，这篇文章基本上当作是学习笔记，有错误欢迎支持，后续也是会持续更新的*`
 
 [中文官方起步教程](https://www.webpackjs.com/guides/)
@@ -49,7 +51,7 @@ ok, 现在最后还剩下各种loader了
 
 将这些依赖装完之后呢，我们需要先创建几个文件定一下文档结构：
 
-```
+```sh
 |- /dist
 |- /src
 |  |- App.vue
@@ -71,7 +73,8 @@ ok, 现在最后还剩下各种loader了
 生产环境和开发环境通用的内容有很多，首先entry入口配置，output出口配置, module的rules配置
 
 接下来在webpack.common.js写入以下内容:
-```
+
+```javascript
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -123,7 +126,8 @@ module.exports = {
 如上，我们基本已经配置完了webpack的通用配置了，接下来就分别针对不同的环境进行一下特殊的配置
 
 webpack.dev.js
-```
+
+```javascript
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -137,7 +141,8 @@ module.exports = merge(common, {
 ```
 
 webpack.pro.js
-```
+
+```javascript
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -161,7 +166,8 @@ module.exports = merge(common, {
 接下来处理一下我们的入口文件，目前的入口文件还是空的
 
 index.js
-```
+
+```javascript
 import Vue from 'vue';
 import App from './App.vue';
 
@@ -172,7 +178,8 @@ new Vue({
 ```
 
 App.vue
-```
+
+```js
 <template>
     <div>{{hello}}</div>
 </template>
@@ -193,7 +200,8 @@ export default {
 我们需要在package.json里面添加几条命令
 
 package.json
-```
+
+```json
 {
   "scripts": {
     "build": "webpack --config webpack.pro.js",
@@ -217,7 +225,8 @@ package.json
 然后打包只有在生产环境的时候，所以我们将这个插件的使用放到webpack.pro.js里
 
 修改后的webpack.pro.js
-```
+
+```js
 ...
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -229,6 +238,7 @@ module.exports = merge(common, {
     ]
 });
 ```
+
 注意这里给clean-webpack-plugin传入的参数为['dist/*']，与官方指南的不同，因为穷人家是在window下操作的，mac下估计是['dist']（我也不知道的啦哈哈哈）
 
 好的，现在打包-修改-打包。就发现dist里面只剩下一份代码。nice~接着我们来第二步优化
@@ -237,7 +247,8 @@ module.exports = merge(common, {
 
 那么，动手吧！
 修改后的webpack.common.js长以下那样
-```
+
+```js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -298,6 +309,7 @@ module.exports = {
   }
 };
 ```
+
 先看看效果，先记下刚刚打包的main文件大小为67kb, 然后`npm run build`
 
 看看打包之后：main文件大小为4kb，vendor文件大小为64kb。很明显vue已经被我们分离出来了。
@@ -305,7 +317,8 @@ module.exports = {
 但是还有个问题。如果你修改了index.js后再打包，你会发现文件名变了。因为我们之前的文件名有包含一个随机hash值。而修改了index.js的话，打包后的hash值就会变化。所以如果想要将vue缓存在用户客户端的话，那么就要让它的名字不要变化，这里我们可以用到webpack的另外一个插件HashedModuleIdsPlugin来控制hash
 
 我们来修改一下webpack.pro.js
-```
+
+```js
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -326,13 +339,16 @@ module.exports = merge(common, {
   ]
 });
 ```
+
 并将webpack.common.js里面的输出配置里的hash改成chunkhash
-```
+
+```js
 output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist')
 }
 ```
+
 这样子我们再打包的时候就会发现不管怎么更改Index.js输出的vendor文件名已经不再变化了。
 
 那么这样的话我们的项目架构就差不多搭建搞了。 当然有很多不完善，但是我会继续努力继续学习的。
@@ -342,7 +358,8 @@ output: {
 首先需要先增加`npm install --save-dev node-sass sass-loader`
 
 然后改一下webpack.common.js里面的rules的配置，如下:
-```
+
+```js
 rules: [
     ...
     {
@@ -365,6 +382,7 @@ rules: [
     }
 ]
 ```
+
 然后就可以开心快乐的使用sass啦，注意在vue文件里面需要为style指定lang="scss"
 
 [完整代码](https://github.com/sansui-orz/blog/tree/master/demos/demo1)

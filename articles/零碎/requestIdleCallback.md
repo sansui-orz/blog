@@ -1,13 +1,10 @@
-## window.requestIdleCallback
+# window.requestIdleCallback
 
-### 说明:
 该方法将指定回调插入一个事件队列，该队列内的事件将在浏览器空闲的时候被调用。
 
-### 使用方法：
-
+## 使用方法
 
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestIdleCallback)
-
 
 ```javascript
 var handle = window.requestIdleCallback(callback[, options]);
