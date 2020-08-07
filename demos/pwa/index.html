@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PWA方案探究</title>
+  <link rel="stylesheet" type="text/css" href="/css/index.css" />
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <!-- <li>张三丰</li>
+    <li>猪八戒</li>
+    <li>孙悟空</li>
+    <li>唐三藏</li>
+    <li>李荣浩</li>
+    <li>刘禹锡</li>
+    <li>王翠花</li>
+    <li>赵子龙</li> -->
+  </ul>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').then(function(r) {
+        console.log('注册成功14', r);
+      }).catch(function(err) {
+        console.error('err', err);
+      });
+    }
+  </script>
+  <script src="/js/index5.js"></script>
+  <script src="/js/index6.js"></script>
+</body>
+</html>

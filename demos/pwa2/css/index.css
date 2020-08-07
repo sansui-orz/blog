@@ -1,0 +1,27 @@
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+.bottom div {
+  line-height: 80px;
+  width: 33.333%;
+  text-align: center;
+  background: #ccc;
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+}
+
+.color-1 {
+  background: #ccc;
+}
+
+.color-2 {
+  background: #eee;
+}
