@@ -1,0 +1,16 @@
+{
+  "name": "pwa2 Home Screen App",
+  "short_name": "pwa2",
+  "desription": "pwa22222",
+  "icons": [
+    {
+      "src": "icons/icon_x_128.png",
+      "size": "128x128",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/blog/demos/pwa2/index.html",
+  "display": "fullscreen",
+  "theme_color": "#B12A34",
+  "background_color": "#B12A34"
+}
