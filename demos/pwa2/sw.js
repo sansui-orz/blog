@@ -1,10 +1,10 @@
-const cacheName = 'pwa2-v9';
+const cacheName = 'pwa2-v10';
 
 const appShellFiles = [
   '/blog/demos/pwa2/css/index1.css',
   '/blog/demos/pwa2/js/index.js',
-  '/blog/demos/pwa2/pwa2.webmanifest',
-  '/blog/demos/pwa2/manifest.json'
+  // '/blog/demos/pwa2/pwa2.webmanifest',
+  '/blog/demos/pwa2/manifest-v1.json'
 ];
 
 self.addEventListener('install', function(e) {

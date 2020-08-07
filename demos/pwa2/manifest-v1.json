@@ -1,11 +1,16 @@
 {
   "name": "pwa2 Home Screen App",
-  "short_name": "pwa2",
-  "desription": "pwa22222",
+  "short_name": "测试pwa",
+  "desription": "测试pwa添加到桌面",
   "icons": [
     {
       "src": "icons/icon_x_128.png",
-      "size": "128x128",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon_x_128.png",
+      "sizes": "128x128",
       "type": "image/png"
     }
   ],
