@@ -1,9 +1,9 @@
 const cacheName = 'pwa2-v7';
 
 const appShellFiles = [
-  '/css/index.css',
-  '/js/index.js',
-  '/pwa2.webmanifest'
+  './css/index.css',
+  './js/index.js',
+  './pwa2.webmanifest'
 ];
 
 self.addEventListener('install', function(e) {
