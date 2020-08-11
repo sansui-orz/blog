@@ -1,8 +1,8 @@
-const cacheName = 'pwa2-v1';
+const cacheName = 'pwa2-v0';
 
 const appShellFiles = [
   '/blog/demos/pwa2/css/index.css',
-  '/blog/demos/pwa2/js/index.js',
+  '/blog/demos/pwa2/js/index-v1.js',
   '/blog/demos/pwa2/manifest.json'
 ];
 
