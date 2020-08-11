@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>通知</title>
+</head>
+<body>
+  <button id="notice-btn">通知</button>
+  <script>
+    const btn = document.querySelector('#notice-btn');
+    btn.onclick = function() {
+      try {
+        if (window.Notification && Notification.permission !== 'granted') { // 如果用户不允许通知
+          // 获取通知权限
+          Notification.requestPermission().then(function(result) {
+            /** result
+            * denied 用户拒绝了通知
+            * granted 用户允许通知
+            * default 不知道用户的选择，行为与denied一样
+            */
+            console.log('result', result);
+            // 如果允许通知
+            if (result === 'granted') {
+              notice();
+            }
+            alert(result);
+          });
+        }
+      } catch(err) {
+        alert('' + err);
+      }
+    };
+
+    function notice() {
+      const notification = new Notification('通知标题' + Math.floor(Math.random() * 100), {
+        body: '通知体',
+        icon: '/demos/notice-push/imgs/icon_x_128.png',
+        requireInteraction: false, // 不自动关闭通知
+      });
+      notification.onclick = function(e) {
+        console.log('点击了通知', e);
+        notification.close(); // 主动关闭
+      };
+
+      notification.onshow = function() {
+        console.log('onshow');
+      };
+
+      notification.onerror = function() {
+        console.log('onerror');
+      };
+
+      notification.onclose = function() {
+        console.log('onclose');
+      };
+    }
+  </script>
+</body>
+</html>

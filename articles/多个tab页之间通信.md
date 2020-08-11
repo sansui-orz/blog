@@ -3,11 +3,13 @@
 > 多tab页间通信又可以根据情况拆分，这里我们只拆分成三种类型的通信“实时通知的通信”，“基于轮训实现的通信”，“跨域的消息通信”
 
 ## 实时通知的通信
-1. BroadCast Channel
+
+### BroadCast Channel
 
 BroadCasr Channel可以实现同源下浏览器不同窗口，tab页，frame或者iframe下的浏览器上下文之间的简单通信
 
 一个简单的例子如下：
+
 ```html
 <ul>
   <li>test1</li>
@@ -40,6 +42,7 @@ BroadCasr Channel可以实现同源下浏览器不同窗口，tab页，frame或�
   // bc.close()；
 </script>
 ```
+
 [完整代码](../demos/broadcast-channel)
 
 如上代码所示，该api设计的用途就是用于同域下多tab页消息通信的，api协议简单，使用起来也比较灵活方便，但最大的问题是其兼容性。
@@ -47,12 +50,12 @@ BroadCasr Channel可以实现同源下浏览器不同窗口，tab页，frame或�
 ![兼容性](../demos/broadcast-channel/20200713114713.jpg)
 从caniuse我们可以看到，它在安卓机器上兼容良好，但是苹果系统和ie完全不支持，所以除非你的业务不考虑苹果系统和ie，否则还是采取其他的办法好一些
 
-
-2. service worker
+### service worker
 
 service worker通常应用于控制关联的页面或者网站，拦截并修改访问和资源请求，细粒度地缓存资源
 
 要注意的是，service worker本身不具备广播的功能，仅仅只是具备这个能力，所以我们需要编写一个中心化的广播功能。
+
 ```javascript
 this.addEventListener('message', function(e) {
   e.waitUntil(
@@ -67,9 +70,11 @@ this.addEventListener('message', function(e) {
   )
 });
 ```
+
 以上就是我们的service worker脚本，它简单的仅有一个监听消息的方法，在方法内再将接收到的这条消息广播出去。
 
 接下来则是我们的页面逻辑，页面逻辑主要包括`初始化service worker`，`消息监听`, `向service worker发送消息`。
+
 ```javascript
 navigator.serviceWorker.register('./sw.js').then(function() {
   console.log('service worker注册成功');
@@ -83,6 +88,7 @@ target.addEventListener('click', function() {
   navigator.serviceWorker.controller.postMessage({ index: 0, value: false });
 });
 ```
+
 [完整代码](../demos/service-worker)
 
 这种方式使用起来也比较方便简洁。
@@ -91,11 +97,12 @@ target.addEventListener('click', function() {
 
 从上兼容性上可以看到，比BroadCast Channel要好很多。但是在IE浏览器的不支持，与安卓浏览器上的部分支持，仍然是不够完美的。并且注意的是，它同样也受同源策略的限制。
 
-3. localStorage
+### localStorage
 
 大家在日常工作中应该都接触使用过localStorage. 但是应该比较少的人同时使用过storage的事件监听（当storage内容发生改变时会触发)。而利用这个监听函数，我们就可以实现同源域名下的多页面通信能力。
 
 代码如下：
+
 ```html
 <ul>
   <li>test1</li>
@@ -130,19 +137,20 @@ target.addEventListener('click', function() {
   });
 </script>
 ```
+
 [完整代码](../demos/localstorage)
 
 ![兼容性](../demos/localstorage/20200713142316.jpg)
 可以看到不论是从兼容性，还是上手难易度。localStorage都是一个极好的选择。仅有的问题也是在其只能传递字符串类型的值，但是将复杂对象使用 JSON 转换一下也是可以克服的。总的来说，问题不大。
 
-4. websocket
+### websocket
 
 上面三种方式都是纯前端的方式实现，使用websocket同样能够实现这种状态实时同步的效果，但是其实现起来比较复杂，对于新手不太友好（我也懒得写node代码了。。。）
 简单说起来，可以基于websocket这种实时推送的消息传输机制，同步的通知多个页面，进行状态同步，就跟聊天室的原理是一致的。
 
 只要把同一台电脑（可以用ip判断）的socket放到同一个房间就可以了。
 
-5. SharedWorker
+### SharedWorker
 
 web worker分为两种，专用worker与共享worker
 
@@ -150,6 +158,7 @@ web worker分为两种，专用worker与共享worker
 利用共享worker能够被多个脚本共用的特性，我们就可以实现多页面通信的功能了。
 
 页面逻辑如下：
+
 ```html
 <ul>
   <li>test1</li>
@@ -182,6 +191,7 @@ web worker分为两种，专用worker与共享worker
 ```
 
 worker逻辑如下：
+
 ```javascript
 var ports = []; // 这里将每个链接的页面收集起来。收到消息时再遍历广播。
 self.addEventListener('connect', function (e) {
@@ -195,6 +205,7 @@ self.addEventListener('connect', function (e) {
     port.start();
 });
 ```
+
 [完整代码](../demos/sharedWorker)
 
 注意上面这样写有个问题。worker只有connect方法，无法在disconnect的时候将port对象从ports列表中移除，如果打开页面太多，会有内存泄漏的风险。
@@ -236,7 +247,6 @@ self.addEventListener('connect', function (e) {
 
 这里假设我们分别有`a.com`与`b.com`两个页面，我们需要通信，只需要在`a.com`页面内插入一个`b.com`的简单iframe页面，然后由`a.com`与iframe的`b.com`通信，`b.com`的iframe再与`b.com`通信。就可以达到跨域名通信的能力。
 
-
 以上就是我目前了解到的多页面间通信的几种方式了。
 
 考虑到复杂度以及兼容性，我会按照`localStorage > service worker > BroadCast Channel > 其他`的顺序选择使用哪种方式。
@@ -244,5 +254,7 @@ self.addEventListener('connect', function (e) {
 小搬砖工一枚，欢迎指正。
 
 参考资料:
+
 [掘金](https://juejin.im/post/5ca04406f265da30ac219ccc)
+
 [SharedWorker](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers)
