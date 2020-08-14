@@ -6,10 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>html5在线直播</title>
+    <style>
+      video {
+        width: 1200px;
+        height: 800px;
+        background: #eee;
+      }
+    </style>
 </head>
-
 <body>
-
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/flv.js/1.5.0/flv.min.js"></script>
+  <video id="videoElement"></video>
+  <script>
+    var videoElement = document.getElementById('videoElement');
+    var flvPlayer = flvjs.createPlayer({
+        type: 'flv',
+        isLive: true,
+        url: 'http://localhost:7001/live/movie.flv'
+    });
+    flvPlayer.attachMediaElement(videoElement);
+    flvPlayer.load();
+    videoElement.onclick = function() {
+      if (flvjs.isSupported()) {
+          flvPlayer.play();
+      }
+    };
+  </script>  -->
+  <video id="videoElement" preload="auto" controls>
+    <source src="http://30.102.230.200:7002/live/movie.m3u8" type="application/x-mpegURL">
+  </video>
+ <!-- http://localhost:3000/live/rfBd56ti2SMtYvSgD5xAV0YU99zampta7Z7S575KLkIZ9PYk.flv -->
 </body>
 
 </html>
