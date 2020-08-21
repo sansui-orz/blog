@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MSE-测试</title>
+</head>
+<body>
+  <video id="video"></video>
+  <button>开始</button>
+  <!-- https://blog.csdn.net/weixin_41196185/article/details/82229244 -->
+  <script>
+    let inited = false;
+    let done = false;
+    let intervalKey;
+    const bufferCache = [];
+    const video = document.getElementById('video');
+    const mediaSource = new MediaSource();
+    video.src = URL.createObjectURL(mediaSource);
+    
+    mediaSource.addEventListener('sourceopen', function() { // 实例已附加到媒体元素，准备接收或者正在接收数据 https://developers.google.com/web/fundamentals/media/mse/basics
+      if (inited) return;
+      inited = true;
+      const sourceBuffer = mediaSource.addSourceBuffer('video/mp4;codecs="avc1.42E01E,mp4a.40.2"');
+      sourceBuffer.addEventListener('updateend', function() {
+        if (done && bufferCache.length === 0) {
+          mediaSource.endOfStream();
+        }
+      });
+      function intervalAppendSourceFromCache() {
+        intervalKey = setInterval(() => {
+          if (bufferCache.length > 0 && !sourceBuffer.updating) {
+            console.log('定时器定时查询sourceBuffer状态并将缓存写入', bufferCache);
+            const bufferOnHead = bufferCache.shift();
+            sourceBuffer.appendBuffer(bufferOnHead);
+          }
+          if (bufferCache.length === 0 && done) {
+            clearInterval(intervalKey);
+          }
+        }, 200);
+      }
+
+      intervalAppendSourceFromCache();
+
+      fetch('./video.mp4').then(function(res) {
+        console.log('查看返回直播数据流', res);
+        return res.body.getReader();
+      }).then(readStream);
+
+      function readStream(resp) {
+        return resp.read().then((result) => {
+          console.log('将数据流读出来', result);
+          done = result.done;
+          if (!result.done) {
+            if (sourceBuffer.updating) {
+              console.log('sourceBuffer正在处理，先讲数据丢进缓存列表', bufferCache);
+              bufferCache.push(result.value.buffer);
+            } else {
+              if (bufferCache.length > 0) {
+                const bufferOnHead = bufferCache.shift();
+                console.log('从缓存列表获取缓存插入到sourceBuffer', bufferOnHead);
+                bufferCache.push(result.value.buffer);
+                sourceBuffer.appendBuffer(bufferOnHead);
+              } else {
+                console.log('正常将流数据插入sourceBuffer', result.value.buffer);
+                sourceBuffer.appendBuffer(result.value.buffer);
+              }
+            }
+            return readStream(resp); // 递归调用读取resp
+          } else {
+            console.log('done');
+          }
+        });
+      }
+    });
+    document.querySelector('button').onclick = function() {
+      video.play();
+    };
+  </script>
+</body>
+</html>
