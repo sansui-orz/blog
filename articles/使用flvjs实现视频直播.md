@@ -12,6 +12,8 @@
 
 - rtmp(仅支持flash播放)
 
+- DASH
+
 ## 兼容性
 
 ### m3u8
@@ -142,6 +144,40 @@ m3u8在移动端以及safari中兼容表现良好，而在pc端基本上不兼�
 然后直接使用safari打开后效果如下：
 
 ![safari](./imgs/20200813163633.jpg)
+
+## flv源码流程分析
+
+对flv.js源码与整体架构感兴趣的可以看看我简单整理出来的flv调用流程图, 这里我看的是1.5.0的版本
+
+![flv调用流程图](./imgs/flvjs.jpg)
+
+其实整个flv.js最核心的方法也就是视频的编解码，其他的多用点心研究一下还是挺好理解的。
+
+做个简单的模块讲解:
+
+- browser.js表示的是调用者的js代码。
+
+- flv包含flv.js对外暴露的接口。
+
+- flv-player主要是flv的表层实现。
+
+- mse-controller对于Media Source的具体实现与控制。
+
+- MediaSource表示MediaSource的实例。
+
+- transmuxer是对于web worker事件的转发，（如果不支持web worker则直接与transmuxer Controller进行通信。
+
+- transmuxer controller对转码流程控制。
+
+- flv-demuxer对flv视频格式进行解码。
+
+- mp4-remux对解码后的数据进行mp4格式编码。
+
+- io-controller对接transmuxer controller与服务端返回数据，进行数据的吞吐操作。
+
+- FetchStreamLoader则是对于请求方法的具体实现与兼容，其提供了fetch/websocket/xhr等多种loader。
+
+以上模块分析并不一定准确，毕竟我也没有太仔细的深入研究，主要也是我对于视频解码与编码这块并没有一点基础，所以也就没有深入。只是希望能够帮助到下一个想要研究一下flv实现的人。
 
 ## 参考资料
 

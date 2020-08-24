@@ -2,7 +2,9 @@
 
 ## 目录
 
-- [html5直播](./articles/html5视频直播.md)
+- [使用Media Source Extensions支持视频流播放](./articles/使用MediaSourceExtensions支持视频流播放.md)
+
+- [使用flvjs实现视频直播](./articles/使用flvjs实现视频直播.md)
 
 - [pwa方案探究](./articles/应用缓存与pwa.md)
 
