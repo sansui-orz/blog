@@ -2,6 +2,8 @@
 
 ## 目录
 
+- [web component的框架 -- Fast](./articles/微软官方web-component组件库FAST.md)
+
 - [uglifyjs-webpack-plugin插件不支持es6引发的思考](./articles/uglifyjs-webpack-plugin插件不支持es6引发的思考.md)
 
 - [使用Media Source Extensions支持视频流播放](./articles/使用MediaSourceExtensions支持视频流播放.md)

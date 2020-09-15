@@ -149,10 +149,12 @@ resolveLoader: {
     }
   }
 },
-{ test: /\.ts$/, use: ['test-loader', 'ts-loader', 'test-loader'] },
+{ test: /\.ts$/, use: ['test-loader', 'ts-loader', 'test-loader2'] },
 ```
 
 测试之后，发现babel-loader没有调用。然后想到，我可以直接找到babel-loader的代码里面进行log啊（真是猪油蒙了心）。
+
+期间发现一个点，就是 **“loader的调用顺序是从右到左的”**，比如上面对于ts文件的调用顺序应该是`test-loader2` -> `ts-loader` -> `test-loader`。
 
 直接在babel-loader里面加了log，甚至连ts-loader内也给加上了。
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FAST 使用CDN</title>
+  <script type="module" sync src="https://unpkg.com/@microsoft/fast-components"></script>
+  <script type="module">
+    import { FASTElement, html, css } from 'https://unpkg.com/@microsoft/fast-element';
+    const template = html`<p>test.</p>`;
+    const styles = css`p{font-size:28px;}`;
+    class TestTag extends FASTElement {
+      static definition = {
+        name: 'test-tag',
+        template,
+        styles,
+        attributes: [
+          'value',
+          { attribute: 'some-attr', property: 'someAttr' },
+        ]
+      };
+
+      value = '';
+      someAttr = '';
+    }
+    FASTElement.define(TestTag);
+  </script>
+  <style>body, html {margin: 0;padding:0;}</style>
+</head>
+<body>
+  <fast-design-system-provider use-defaults>
+    <fast-button>Hello world</fast-button>
+    <!-- 手风琴 -->
+    <fast-accordion>
+      <fast-accordion-item expanded>
+        <span slot="heading">Panel one</span>
+        Panel one content
+      </fast-accordion-item>
+      <fast-accordion-item>
+        <span slot="heading">Panel two</span>
+        Panel two content
+      </fast-accordion-item>
+      <fast-accordion-item expanded>
+        <span slot="heading">Panel three</span>
+        Panel three content
+      </fast-accordion-item>
+    </fast-accordion>
+    <!-- 锚点/a标签 -->
+    <fast-anchor href="https://fast.design" appearance="hypertext">FAST</fast-anchor>
+    <fast-badge appearance="accent">Danger</fast-badge>
+    <fast-card>
+      <h3>Card title</h3>
+      <p>At purus lectus quis habitant commodo, cras. Aliquam malesuada velit a tortor. Felis orci tellus netus risus et ultricies augue aliquet.</p>
+      <fast-button>Learn more</fast-button>
+    </fast-card>
+    <fieldset>
+      <legend>Fruits</legend>
+      <fast-checkbox checked>Apple</fast-checkbox>
+      <fast-checkbox checked>Banana</fast-checkbox>
+      <fast-checkbox>Honeydew</fast-checkbox>
+      <fast-checkbox checked>Mango</fast-checkbox>
+    </fieldset>
+
+    <test-tag value="hi" some-attr="1"><p>test</p></test-tag>
+  </fast-design-system-provider>
+</body>
+</html>
