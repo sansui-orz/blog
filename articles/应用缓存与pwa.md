@@ -10,9 +10,9 @@ AppCache与Service Worker是互斥的，任何用了Service Worker的页面将�
 
 ## 使用service worker
 
-关于service worker的使用网上有很多[文章](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps/Offline_Service_workers)了，我就不在赘述。
+关于service worker的使用网上有很多[文章](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps/Offline_Service_workers)了，我就不再赘述。
 
-使用service worker实现pwa网站是很简单的，它难就难在管理你的更新，让你的更新能更快的触达用户。(关于更新这块还能单独再拎出来讲很多，这里先不展开，后面再补)
+使用service worker实现pwa网站是很简单的，它难就难在如何管理你的更新，让你的更新能更快的触达用户。(关于更新这块还能单独再拎出来讲很多，这里先不展开，后面再补)
 
 这里主要讲讲service worker使用中需要注意的事情。
 
@@ -30,7 +30,7 @@ AppCache与Service Worker是互斥的，任何用了Service Worker的页面将�
 
 2. html头部需要链接正确的manifest文件，例`<link ref="manifest" href="./manifest.json" />`
 
-3. 合适的图标可显示在主屏上（这里我之前设置了一个128*128的图标导致无法添加到屏幕，后面设置了144*144就可以了，原因成谜，参考[Why is my 'add to home screen' Web App Install Banner not showing up in my web app](https://stackoverflow.com/questions/43003424/why-is-my-add-to-home-screen-web-app-install-banner-not-showing-up-in-my-web-a)采用的解法。
+3. 合适的图标可显示在主屏上（这里我之前设置了一个128\*128的图标导致无法添加到屏幕，后面设置了144\*144就可以了，原因成谜，参考[Why is my 'add to home screen' Web App Install Banner not showing up in my web app](https://stackoverflow.com/questions/43003424/why-is-my-add-to-home-screen-web-app-install-banner-not-showing-up-in-my-web-a)采用的解法。
 
 4. 网站需要使用service worker
 
@@ -66,11 +66,11 @@ AppCache与Service Worker是互斥的，任何用了Service Worker的页面将�
 
 主要有两点原因：
 
-1. 如果用户没有打开手机浏览器“允许创建快捷方式”的权限，那么将不会弹出添加框（主动添加也无法添加），并且在我手机上该权限是默认关闭的（其他手机不太确定）。
+1. 如果用户没有打开手机浏览器“允许创建快捷方式”的权限，那么将不会弹出添加框（**主动添加也无法添加**），并且在我手机上该权限是默认关闭的（其他手机不太确定）。
 
-2. 如果用户添加到桌面之后再删除，之后再打开网站也不会弹出添加框（需要主动添加）。
+2. 如果用户添加到桌面之后再删除，**之后再打开网站也不会弹出添加框**（需要主动添加）。
 
-这两个场景都很隐藏用户添加应用到桌面的行为。如果使用强引导用户去添加，则会加大用户的使用成本，且对于体验很不友好。所以这种方式目前在我看来只适用于强依赖性的站点，例如组织内部网站，就可以在组织内部强制要求添加到桌面，至于要求游客这么做完全就是为难人了。
+这两个场景都很影响用户添加应用到桌面的行为。如果使用强引导去引导用户添加，则会加大用户的使用成本，且对于体验很不友好。所以这种方式目前在我看来只适用于强依赖性的站点，例如组织内部网站，或是有手段能够强制用户添加到桌面的应用（比如某些学校会要求家长装一些指定教育类APP），基于这种强制性手段添加才能万无一失，至于要求游客这么做完全就是难为人了。
 
 ## 使用通知api
 
@@ -122,11 +122,13 @@ function notice() {
 }
 ```
 
-具体代码可以查看[notificate-demo](../demos/notice-push/notice.html), [效果](https://sansui-orz.github.io/blog/demos/notice-push/notice.html)
+具体代码可以查看[notificate-demo](../demos/notice-push/notice.html), 或者查看[效果](https://sansui-orz.github.io/blog/demos/notice-push/notice.html)
 
 ## 推送
 
 推送要比通知复杂很多，因为推送需要结合service worker。且目前推送api仍然处于初级阶段。
+
+（推送待补充）
 
 ## 参考资料
 

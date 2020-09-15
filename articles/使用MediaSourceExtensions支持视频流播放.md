@@ -10,7 +10,7 @@
 
 ## 搭建服务端视频流服务
 
-搭建一个node的视频流服务，这里为了简单，不实用任何依赖，直接`node server`跑服务。
+搭建一个node的视频流服务，这里为了简单，不使用任何依赖，直接终端运行`node server`跑服务。
 
 文件名：***server.js***
 
@@ -40,7 +40,7 @@ server.listen(port, () => {
 
 可以看到上面的服务很简单，当访问`.mp4`后缀的路由时，流式返回视频流数据。否则返回我们的静态页面。
 
-但是需要注意不是所有mp4文件都可以流式传输给video播放的，使用普通mp4播放会报错，需要使用[fregament mp4](https://blog.csdn.net/lyuan1314/article/details/9289827)格式的视频才行。
+但是需要注意不是所有mp4文件都可以流式传输的，使用普通mp4进行流式播放会报错，需要使用[fregament mp4](https://blog.csdn.net/lyuan1314/article/details/9289827)格式的视频才行。
 
 这里我直接使用的是[MSE（Media Source Extensions）的一点尝试](https://blog.csdn.net/weixin_41196185/article/details/82229244)内提供的一个[fragament mp4文件](https://raw.githubusercontent.com/nickdesaulniers/netfix/gh-pages/demo/frag_bunny.mp4)。
 
