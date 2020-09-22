@@ -2,6 +2,8 @@
 
 ## 目录
 
+- [React使用useReducer实现全局状态管理(20行代码)](./articles/React使用useReducer实现全局状态管理.md)
+
 - [web component的框架 -- Fast](./articles/微软官方web-component组件库FAST.md)
 
 - [uglifyjs-webpack-plugin插件不支持es6引发的思考](./articles/uglifyjs-webpack-plugin插件不支持es6引发的思考.md)
