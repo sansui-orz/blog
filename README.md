@@ -2,6 +2,8 @@
 
 ## 目录
 
+- [关于微前端的思考](./articles/关于微前端的思考.md)
+
 - [React使用useReducer实现全局状态管理(20行代码)](./articles/React使用useReducer实现全局状态管理.md)
 
 - [web component的框架 -- Fast](./articles/微软官方web-component组件库FAST.md)
