@@ -6,7 +6,7 @@
 
 最后参考[MSE（Media Source Extensions）的一点尝试](https://blog.csdn.net/weixin_41196185/article/details/82229244), 自己搭建了简单的一个视频流播放（不包含视频转码）。
 
-[源码地址](../demos/video-live/mse)
+[源码地址](https://github.com/sansui-orz/blog/tree/master/demos/video-live/mse)
 
 ## 搭建服务端视频流服务
 
