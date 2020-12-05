@@ -2,7 +2,19 @@
 
 [Media Source Extensions](https://developer.mozilla.org/zh-CN/docs/Web/API/Media_Source_Extensions_API)提供了实现无插件且基于 Web 的流媒体的功能。
 
-目前前端支持的flv.js/dash.js/hls.js等库均用到了MSE。但是对于MSE的简单使用方法并没有太多相关资料（至少我没有找到）。
+简单来说，MSE起到video标签与视频流数据之间桥梁的作用。
+
+那么为什么需要这个桥梁呢？
+
+因为浏览器对视频格式的支持非常有限，尤其是一些流式的视频，在MSE出现之前，这类视频格式的支持主要依靠Flash等插件，但是由于Flash臃肿，不安全等原因，现代浏览器已经逐渐不再支持，Chrome也在2020-12后停止对flash的支持。所以MSE也就应运而生。
+
+前面也说到了，MSE在前端视频播放中起到的作用仅仅是作为VIDEO与视频数据之间的桥梁，让视频数据流能够通过MSE传递给VIDEO进行播放，可是浏览器不是不支持这类的流式视频格式吗？为什么这里又能将视频数据传递给VIDEO进行播放呢？
+
+这里主要涉及到视频相关的较为深入一丢丢的知识了，一个视频主要有两个比较主要的因素组成，一个是它的封装格式，一个是它的编码格式。例如mp4/mov这类的叫封装格式，也就相当于将视频数据装进一个叫 mp4或mov的盒子里，其间的区别主要在于盒子的形状，容量，质量等会不一致，但是里面装的视频数据还是一样的。那么编码格式讲的就是这个盒子里装的视频数据了，其实也就相当于视频的压缩算法，现在常见的编码格式有h263/h264/h265/av1等，当然，浏览器对于这些编码格式也不是全部支持，但是大部分对于一些常见的编码是支持的，比如h264.
+
+基于封装格式和编码格式这两点，再加上MSE，我们就可以实现在浏览器上播放大多数的视频格式。比如用h264编码的flv流式视频在Chrome上是不支持播放的，但是h264编码的mp4却可以，那么我只需要在前端拿到flv视频数据的时候将视频数据从flv这个视频盒子里拿出来，然后再放进一个新的mp4的盒子，这样浏览器是不是就可以播放了呢？答案是肯定的。
+
+但是这时候就有个问题了，因为流式视频，流式视频，那么它传输的时候肯定也是流式传输数据的，我们怎么将这些流式的数据一点点的传递给video呢？要知道我们之前的video的使用仅仅是给它一个src就不需要我们管了。但是对于流式视频显然不能这样。这时候就要到我们的MSE登场了, MSE能够提供多个SourceBuffer（资源容器）,每当你收到一段视频数据的时候，你就可以将这部分的数据append到对应的SourceBuffer里了。
 
 最后参考[MSE（Media Source Extensions）的一点尝试](https://blog.csdn.net/weixin_41196185/article/details/82229244), 自己搭建了简单的一个视频流播放（不包含视频转码）。
 
@@ -42,7 +54,7 @@ server.listen(port, () => {
 
 但是需要注意不是所有mp4文件都可以流式传输的，使用普通mp4进行流式播放会报错，需要使用[fregament mp4](https://blog.csdn.net/lyuan1314/article/details/9289827)格式的视频才行。
 
-这里我直接使用的是[MSE（Media Source Extensions）的一点尝试](https://blog.csdn.net/weixin_41196185/article/details/82229244)内提供的一个[fragament mp4文件](https://raw.githubusercontent.com/nickdesaulniers/netfix/gh-pages/demo/frag_bunny.mp4)。
+这里我直接使用的是[MSE（Media Source Extensions）的一点尝试](https://blog.csdn.net/weixin_41196185/article/details/82229244)内提供的一个[fragament mp4文件](https://raw.githubusercontent.com/nickdesaulniers/netfix/gh-pages/demo/frag_bunny.mp4)。 当然你也可以通过 ffmpeg自己生成你想要的视频，ffmpeg是一个很强大的视频处理工具库，市面上很多的视频相关应用都是基于它进行开发的，有兴趣的可以深入研究一下这一块。
 
 通过
 
