@@ -2,6 +2,8 @@
 
 ## 目录
 
+- [Bilibili全景视频原理](./articles/Bilibili全景视频原理.md)
+
 - [国内视频站点加密方式探究与破解](./articles/国内视频站点加密方式探究与破解.md)
 
 - [关于微前端的思考](./articles/关于微前端的思考.md)
