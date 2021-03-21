@@ -2,6 +2,8 @@
 
 ## 目录
 
+- [解决puppeteer无法在docker容器中运行](./articles/解决puppeteer无法在docker容器中运行.md)
+
 - [Bilibili全景视频原理](./articles/Bilibili全景视频原理.md)
 
 - [国内视频站点加密方式探究与破解](./articles/国内视频站点加密方式探究与破解.md)
