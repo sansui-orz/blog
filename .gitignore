@@ -5,3 +5,5 @@ demos/*/npm-debug.log
 demos/*/*/__snapshots__
 */node_modules/
 npm-debug.log
+
+server/dist
