@@ -25,7 +25,7 @@ app
   .use(async (ctx: Koa.Context, next: Koa.Next) => {
     next();
     if (ctx.status === 404) {
-      ctx.redirect('/');
+      ctx.redirect('/home.html');
     }
   })
   .listen(3000, () => {
