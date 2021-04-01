@@ -7,3 +7,6 @@ demos/*/*/__snapshots__
 npm-debug.log
 
 server/dist
+server/public/article
+server/public/imgs
+server/public/home.html

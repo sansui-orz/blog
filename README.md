@@ -46,8 +46,6 @@
 
 - [node如何在终端提问](./articles/零碎/node如何在终端提问.md)
 
-- [axios.js的源码了解](./articles/零碎/阅读axios.js源码.md)
-
 - [深拷贝的简单实现](./articles/零碎/深拷贝的简单实现.md)
 
 - [typescript学习笔记](./articles/typescript学习笔记.md)
