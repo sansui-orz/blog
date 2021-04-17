@@ -25,9 +25,9 @@ app
   .use(async (ctx: Koa.Context, next: Koa.Next) => {
     next();
     if (ctx.status === 404) {
-      ctx.redirect('/home.html');
+      ctx.redirect('/');
     }
   })
-  .listen(3000, () => {
-    console.log('server run on: http://127.0.0.1:3000');
+  .listen(3011, () => {
+    console.log('server run on: http://127.0.0.1:3011');
   });

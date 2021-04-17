@@ -15,7 +15,7 @@ async function readArticlesList() {
     const id = crypto.createHash('md5').update(_matchObj[1]).digest('hex');
     writeArticle(id, _matchObj[1], _matchObj[2]);
     return `<li>
-      <span>03-20</span>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="/article/${id}">${_matchObj[1]}</a>
+      <span>03-20</span>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="./article/${id}">${_matchObj[1]}</a>
     </li>`;
   });
   let finalHtmlStr = `
@@ -41,7 +41,7 @@ async function writeArticle(id, title, _path) {
   });
   await fsPromises.writeFile(
     path.resolve(__dirname, '../public/article', id),
-    articleTemplate.replace('{title}', title).replace('{body}', htmlCode.replace(/"\.\/imgs\//g, '"/imgs/').replace('language-tsx', 'javascript')));
+    articleTemplate.replace('{title}', title).replace('{body}', htmlCode.replace(/"\.\/imgs\//g, '"../imgs/').replace('language-tsx', 'javascript')));
 }
 
 readArticlesList();

@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm run generator && nodemon --watch ./ -e ts --exec \"ts-node\" ./index.ts",
     "build": "tsc --project tsconfig.json",
-    "generator": "sh generatorArticle/generator.sh"
+    "generator": "sh generatorArticle/generator.sh",
+    "deploy": "sh deploy.sh",
+    "stop": "pm2 stop blog"
   },
   "author": "",
   "license": "ISC",
