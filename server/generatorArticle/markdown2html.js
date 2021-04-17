@@ -36,12 +36,17 @@ async function readArticlesList() {
 }
 
 async function writeArticle(id, title, _path) {
-  const htmlCode = await markdown2html({
-    path: path.resolve(__dirname, '../../', _path)
-  });
-  await fsPromises.writeFile(
-    path.resolve(__dirname, '../public/article', id),
-    articleTemplate.replace('{title}', title).replace('{body}', htmlCode.replace(/"\.\/imgs\//g, '"../imgs/').replace('language-tsx', 'javascript')));
+  try {
+    const htmlCode = await markdown2html({
+      path: path.resolve(__dirname, '../../', _path)
+    });
+    await fsPromises.writeFile(
+      path.resolve(__dirname, '../public/article', id),
+      articleTemplate.replace('{title}', title).replace('{body}', htmlCode.replace(/"\.\/imgs\//g, '"../imgs/').replace('language-tsx', 'javascript')));
+  } catch (err) {
+    console.log('生成文章失败: ', err);
+    console.log(path.resolve(__dirname, '../../', _path));
+  }
 }
 
 readArticlesList();

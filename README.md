@@ -62,7 +62,7 @@
 
 - [node后端接收表单文件](./articles/node后端接收表单文件.md)
 
-- [webpack构建vue开发环境](./articles/webpack手动构建vue开发环境.md)
+- [webpack构建vue开发环境](./articles/webpack手动构建Vue开发环境.md)
 
 ## 零碎记录
 
