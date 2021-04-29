@@ -1,5 +1,8 @@
 # 使用typescript写一个npm组件库
 
+[tag]:typescript|npm|lib
+[create]:2020-07-29
+
 ## 前言
 
 在现阶段的前端日常工作中，npm包以及typescript很多人都不陌生了，但是估计使用ts写过npm包的人还是不是太多的。我这两天刚好在捣鼓这个，遇到一些坑，东拼西凑总算趟过。

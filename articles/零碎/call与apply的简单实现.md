@@ -1,8 +1,11 @@
 # call与apply的简单实现
 
+[tag]:记录|js
+[create]:2020-07-30
+
 原理是通过“谁调用函数，函数就指向谁”的原理，将方法绑定到传入的this上。
 
-首先是call的实现。
+## call的实现
 
 ```javascript
 Function.prototype.myCall = function() {
@@ -16,7 +19,7 @@ Function.prototype.myCall = function() {
 }
 ```
 
-apply的实现也很简单了。
+## apply的实现
 
 ```javascript
 Function.prototype.myApply = function() {
@@ -30,7 +33,7 @@ Function.prototype.myApply = function() {
 }
 ```
 
-顺便把bind也实现了。
+## bind的实现
 
 ```javascript
 Function.propotype.myBind = function() {

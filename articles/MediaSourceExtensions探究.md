@@ -1,5 +1,10 @@
 # Media Source Extendsions探究
 
+[tag]:MSE|video|js
+[create]:2020-08-11
+
+TODO
+
 ## 参考资料
 
 [Media Source Extensions™ W3C Editor's Draft 30 January 2020](https://w3c.github.io/media-source/)

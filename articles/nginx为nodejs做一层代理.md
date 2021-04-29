@@ -1,5 +1,8 @@
 # nginx为nodejs做一层代理
 
+[tag]:nginx|server|node
+[create]:2020-07-03
+
 Nginx是一个HTTP服务器，可以将服务器上的静态文件（如HTML、图片）通过HTTP协议展现给客户端。
 
 通常用来做以下工作：

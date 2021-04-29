@@ -1,5 +1,8 @@
 # webpack手动构建Vue开发环境
 
+[tag]:webpack|vue|config
+[create]:2018-11-06
+
 *当然，还是建议照着官方文档来，这篇文章基本上当作是学习笔记，有错误欢迎支持，后续也是会持续更新的*`
 
 [中文官方起步教程](https://www.webpackjs.com/guides/)
@@ -87,7 +90,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ // 生成构建html的模版
-            template: './index.html' // 指定模版路径 
+            template: './index.html' // 指定模版路径
         }),
         new VueLoaderPlugin() // vue解析所需要的插件
     ],
@@ -155,7 +158,7 @@ module.exports = merge(common, {
             sourceMap: true
         }),
         new webpack.DefinePlugin({ // 指定当前环境，防止某些库会用到这个参数
-            'process.env.NODE_ENV': JSON.stringify('production')    
+            'process.env.NODE_ENV': JSON.stringify('production')
         })
     ]
 })
@@ -277,7 +280,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ // 生成构建html的模版
-      template: './index.html' // 指定模版路径 
+      template: './index.html' // 指定模版路径
     }),
     new VueLoaderPlugin() // vue解析所需要的插件
   ],

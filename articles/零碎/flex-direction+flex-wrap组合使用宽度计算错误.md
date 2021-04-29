@@ -1,5 +1,8 @@
 # flex-direction:column;&flex-wrap:wrap;组合使用宽度计算错误
 
+[tag]:记录|js|flex
+[create]:2020-07-03
+
 如题，当某个项目的布局是两行自适应的横向排列的时候，偶然发现`flex-direction:column;`与`flex-wrap:wrap`的组合很适合做这种事情：
 
 ```html

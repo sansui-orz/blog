@@ -1,5 +1,8 @@
 # window.requestIdleCallback
 
+[tag]:记录|js
+[create]:2019-12-05
+
 该方法将指定回调插入一个事件队列，该队列内的事件将在浏览器空闲的时候被调用。
 
 ## 使用方法

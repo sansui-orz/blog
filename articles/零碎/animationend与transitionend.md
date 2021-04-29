@@ -1,5 +1,8 @@
 # animationend & transitionend
 
+[tag]:记录|css|js|animation
+[create]:2020-08-03
+
 之前一直不知道原来js可以监听动画结束与变换结束，所以一直采用的是setTimeout去做动画结束之后的逻辑。
 
 ## animationend

@@ -1,5 +1,8 @@
 # 解决puppeteer无法在docker中运行
 
+[tag]:docker|爬虫|puppeteer
+[create]:2021-03-21
+
 最近开发遇到个需要爬取第三方数据的需求，所有用上了puppeteer，但是在部署的时候发现爬取的时候会报错:
 
 ```text

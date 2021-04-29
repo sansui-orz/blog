@@ -1,5 +1,8 @@
 # generator详解
 
+[tag]:generator|es6
+[create]:2021-03-21
+
 相信大家对generator都不是很陌生了，在现在的前端开发中，即使你对它并不熟悉，但是大概率你是使用过它的（即使你使用的是async/await或者promise，最终可能也是通过babel等工具转成generator，当然可能你并没有发现这一点）
 
 ## 简单的用法

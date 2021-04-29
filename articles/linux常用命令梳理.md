@@ -1,5 +1,8 @@
 # linux常用命令梳理
 
+[tag]:linux|commend|记录
+[create]:2020-07-03
+
 ## 文件与目录的操作
 
 **ls** 文件列表

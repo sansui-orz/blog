@@ -1,5 +1,8 @@
 # Element.closest
 
+[tag]:记录|js|closest
+[create]:2020-08-14
+
 Element.closest用来获取：匹配特定选择器且离当前元素最近的祖先元素（也可以是当前元素本身）。如果匹配不到，则返回 null。
 
 这个方法很像`Element.matches`，所以一下就想到了可以直接应用到事件代理上面。

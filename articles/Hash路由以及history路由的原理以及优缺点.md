@@ -1,5 +1,8 @@
 # Hash路由以及History路由的实现原理以及优缺点
 
+[tag]:hash|history|router
+[create]:2019-10-08
+
 ## Hash路由的实现原理
 
 通过变更location.hash来进行路由的改变，通过window.onHashChange来监听hash的变化，再根据hash判断需要显示什么页面

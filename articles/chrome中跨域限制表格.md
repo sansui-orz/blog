@@ -1,5 +1,8 @@
 # chrome中跨域限制表格
 
+[tag]:chrome|cors
+[create]:2020-07-03
+
 | 原地址 | 目标地址 | 说明 | 是否允许请求 |
 | --- | --- | --- | --------- |
 | <http://a.example.com/> | <<http://a.example.com/a.txt> | 同域下 | 允许 |

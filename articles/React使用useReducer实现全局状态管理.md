@@ -1,5 +1,8 @@
 # React使用useReducer实现全局状态管理(20行代码)
 
+[tag]:react|hook|store
+[create]:2020-09-22
+
 ![示例](./imgs/reducer-demo.gif)
 [最终效果]
 

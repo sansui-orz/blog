@@ -1,5 +1,8 @@
 # Resource Hints
 
+[tag]:resource hints|link|html
+[create]:2020-07-22
+
 Respirce Hints规范定义了`<link>`标签的`dns-prefetch`, `preconnect`, `prefetch`, `prerender`属性值如何控制资源加载。
 
 ## dns-prefetch（dns预解析）

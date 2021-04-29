@@ -1,5 +1,8 @@
 # React同构探索
 
+[tag]:react|ssr|node
+[create]:2020-07-17
+
 [代码](../demos/react-ssr)
 
 ## 技术栈

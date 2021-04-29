@@ -1,5 +1,8 @@
 # web安全
 
+[tag]:web|安全
+[create]:2020-09-23
+
 [参考文章](https://zoumiaojiang.com/article/common-web-security/)
 
 ## XSS

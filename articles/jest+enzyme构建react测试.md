@@ -1,8 +1,11 @@
-## jest + enzyme构建react单元测试
+# jest + enzyme构建react单元测试
+
+[tag]:jest|enzyme|react|单元测试
+[create]:2020-07-14
 
 [代码](../demos/jest-react)
 
-### 环境搭建
+## 环境搭建
 
 安装依赖`npm install --save-dev jest enzyme enzyme-adapter-react-16 react-test-renderer babel-jest identity-obj-proxy`。每个人项目内依赖不一样可能会有缺失的依赖，运行的时候缺什么补什么就可以了。
 
@@ -53,7 +56,7 @@ module.exports = 'test-file-stub';
 
 todolist组件主要包含两个自组件，一个就是整个的List，还有Item
 
-### 编写Item的测试
+## 编写Item的测试
 
 新建`/test/item.test.js`
 ```javascript
@@ -84,7 +87,7 @@ toMatchSnapshot方法，会在同级目录下生成一个__snapshots文件夹用
 
 ![跑item.test.js](./imgs/20200714174247.jpg)
 
-### 编写List组件的测试
+## 编写List组件的测试
 List组件相比于item组件要复杂一点，所以将整个list的验证拆分为几部分完成
 
 1. 新建`/test/list.test.js`
@@ -237,7 +240,7 @@ describe('异步函数测试', () => {
   });
 ```
 
-### 测试覆盖率
+## 测试覆盖率
 jest的测试覆盖率的配置十分简单，只需要在test.config.js里面把`collectCoverage`设置为true, 同时设置`collectCoverageFrom`包含需要测试的文件。
 
 然后在package.json的scripts脚本加上`--coverage`
@@ -252,7 +255,8 @@ jest的测试覆盖率的配置十分简单，只需要在test.config.js里面�
 
 THE END.
 
-参考资料：
+## 参考资料：
+
 [使用Jest进行React单元测试](https://juejin.im/post/5b6c39bde51d45195c079d62#heading-28)
 [Jest & enzyme 进行react单元测试](https://juejin.im/post/5c417aa4f265da616a47eb4d)
 [jest文档](https://jestjs.io/docs/zh-Hans/getting-started)

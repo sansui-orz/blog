@@ -1,11 +1,16 @@
-###### **安装依赖**
+# node后端接收表单文件
+
+[tag]:node|file|腾讯云
+[create]:2019-03-05
+
+## **安装依赖**
 ```
 npm install --save express multer formidable body-parser
 ```
 
-###### app.js
+## app.js
 
-###### 使用multer保存表单图片
+## 使用multer保存表单图片
 ```
 const express = require('express');
 const app = express();
@@ -27,7 +32,7 @@ const server = app.listen(3000, () => {
 });
 ```
 
-###### 使用formidable保存表单图片
+## 使用formidable保存表单图片
 ```
 const express = require('express');
 const app = express();
@@ -57,7 +62,7 @@ const server = app.listen(3000, () => {
 });
 ```
 
-###### 将上传的文件保存到腾讯云cos上
+## 将上传的文件保存到腾讯云cos上
 ```
 const express = require('express');
 const app = express();

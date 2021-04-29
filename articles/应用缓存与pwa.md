@@ -1,5 +1,8 @@
 # 应用缓存与PWA
 
+[tag]:web|cache|pwa
+[create]:2020-08-07
+
 应用缓存（AppCache）将在chrome85以上删除，在Firefox44以上弃用，Safari在2018年弃用。
 
 至于被弃用的原因是“AppCache无法部分更新，且有些用例会导致安全性以及严重的可用性问题”。

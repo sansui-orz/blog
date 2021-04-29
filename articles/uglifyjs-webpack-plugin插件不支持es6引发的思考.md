@@ -1,5 +1,8 @@
 # uglifyjs-webpack-plugin插件不支持es6引发的思考
 
+[tag]:webpack|思考|js
+[create]:2020-09-14
+
 ## 背景
 
 为什么会想到这个问题？

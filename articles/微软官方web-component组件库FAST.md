@@ -1,5 +1,8 @@
 # 微软官方web-component组件库FAST
 
+[tag]:web component|FAST
+[create]:2020-09-15
+
 由于之前熟悉了一下[web component](./欢迎web-component到来.md)，所以对于它比较感兴趣，甚至内心还有个“是否可以自己基于web component写一个前端库“的冲动。当然，碍于技术以及惰性，我觉得我是不会动手的。不过最近发现了一个web component的库，所以就去研究了一下。
 
 FAST是基于Web组件和现代Web标准构建的技术集合。其主要包含，`@fluentui/web-components`，`@microsoft/fast-components`，`@microsoft/fast-foundation`与`@microsoft/fast-element`。
@@ -260,7 +263,7 @@ export default class List extends FASTElement {
 - 对象引用的数据变化无法监听到。
 
   这点比较烦，如果只对list加了observable装饰器，那当改变list的数据的时候无法更新组件。而解法有两个，1. 每次更新list都重新生成一个新引用，2. 将需要监听变动的属性都使用observable进行监听。
-  
+
   我们这里采用的是第二个方案。
 
 - 节点属性需要加上`:`才能监听到变更，如上面todo-item组件的ccontent属性，需要像`<todo-item :ccontent="${(x) => x.name}"></todo-item>`这样传入节点。

@@ -42,7 +42,12 @@ async function writeArticle(id, title, _path) {
     });
     await fsPromises.writeFile(
       path.resolve(__dirname, '../public/article', id),
-      articleTemplate.replace('{title}', title).replace('{body}', htmlCode.replace(/"\.\/imgs\//g, '"../imgs/').replace('language-tsx', 'javascript')));
+      articleTemplate
+        .replace('{title}', title)
+        .replace('{body}', htmlCode
+          .replace(/"\.\/imgs\//g, '"../imgs/')
+          .replace('language-tsx', 'javascript'))
+        .replace('gitalk-id', id));
   } catch (err) {
     console.log('生成文章失败: ', err);
     console.log(path.resolve(__dirname, '../../', _path));

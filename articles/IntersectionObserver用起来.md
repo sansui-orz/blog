@@ -1,5 +1,10 @@
 # IntersectionObserver
 
+[tag]:IntersectionObserver|html|js
+[create]:2019-12-05
+
+## 概念
+
 在很多场景下，我们经常会做元素曝光计算。
 
 而js在这方面的表现比较乏力。
@@ -13,6 +18,8 @@
 那就是 Intersection Observer
 
 Intersection Observer是一个构造器，它可以创建并返回一个IntersectionObserver对象。
+
+## 使用
 
 简单的使用语法如下:
 

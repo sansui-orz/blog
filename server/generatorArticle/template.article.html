@@ -10,6 +10,7 @@
   <link rel="icon" href="../m.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 </head>
 
 <body>
@@ -18,8 +19,25 @@
     <div class="content">{body}</div>
     <aside></aside>
   </div>
-  <script async onload="hljs.highlightAll();"
-    src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+  <div id="gitalk-container"></div>
+  <script async onload="hljs.highlightAll();" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+  <script async onload="initGitalk();" src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script>
+    function initGitalk() {
+      var gitalk = new Gitalk({
+        clientID: '9568d133f79d7a39aa32',
+        clientSecret: 'a7c8fcf003cdb377cfc7d891493bea8cf1d48816',
+        repo: 'blog',
+        owner: 'sansui-orz',
+        admin: ['sansui-orz'],
+        id: 'gitalk-id',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container');
+
+    }
+  </script>
 </body>
 
 </html>

@@ -1,5 +1,8 @@
 ## lodash源码阅读
 
+[tag]:lodash|源码
+[create]:2019-11-07
+
 > 在工作的间隙，多读一些优秀的代码。发现亮点便记录下来。
 
 - [x] isBoolean
@@ -97,7 +100,7 @@
   Escapes the `RegExp` special characters "^", "$", "\", ".", "*", "+", "?", "(", ")", "[", "]", "{", "}", and "|" in `string`
 
 - [x] cloneDeep // 深拷贝
-  
+
 - [x] add
   顾名思义，就是传入两个参数，进行相加的操作，对传入数进行了安全的转换，如add(1, undefined) => 1
 
@@ -110,7 +113,7 @@
     { 'user': 'betty', 'active': true },
     { 'user': 'fred', 'active': false }
   ]
- 
+
   countBy(users, value => value.active);
   // => { 'true': 2, 'false': 1 }
   ```

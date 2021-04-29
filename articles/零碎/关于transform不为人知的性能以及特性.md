@@ -1,6 +1,9 @@
-## 关于transform不为人知的性能以及特性
+# 关于transform不为人知的性能以及特性
 
-背景：
+[tag]:记录|css|transform
+[create]:2020-07-03
+
+## 背景：
 
 在轮播图组件中使用到了left+transform去定位每个块，而当我这样做的时候却发现，它在手机浏览器上显示效果不佳，会出现闪跳，卡顿的情况。
 
@@ -42,7 +45,9 @@ class2则是先移动100px，然后再缩小一倍
 可能下图看上去会更加明了：
 ![transform2](../imgs/20200623184149.jpg)
 
-#### 所以，以上说明了，transform属性的顺序，会前者影响后者的
+## 所以
+
+以上说明了，transform属性的顺序，会前者影响后者的
 
 2. 这里又可以引申出一个问题，即是，transform是否会影响到除自身外到其他元素：
 
@@ -50,7 +55,9 @@ class2则是先移动100px，然后再缩小一倍
 
 ![transform3](../imgs/20200628140447.jpg)
 
-#### 答案是，transform并不会改变其在文档流中的布局
+## 最终
+
+答案是，transform并不会改变其在文档流中的布局
 
 2.1 既然transform不会影响文档流的布局，那如果a标签使用了transform，这时候它的实际可点击区域是在文档流里的原位置，还是在转换后的位置呢？
 
@@ -64,7 +71,7 @@ class2则是先移动100px，然后再缩小一倍
 
 所以在实际应用中，如果需要实现动画，请尽可能的选择使用tansform/opacity此类不影响文档树的api。
 
-参考资料：
+## 参考资料：
 
 http://sy-tang.github.io/2014/05/14/CSS%20animations%20and%20transitions%20performance-%20looking%20inside%20the%20browser/
 

@@ -1,5 +1,8 @@
 # window.navigator.sendBeacon()
 
+[tag]:记录|js
+[create]:2019-10-09
+
 该方法可用于通过HTTP将少量数据传输到Web服务器
 
 ## 语法

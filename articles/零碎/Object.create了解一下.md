@@ -1,5 +1,8 @@
 # Object.create
 
+[tag]:记录|js
+[create]:2019-12-03
+
 该方法创建了一个新对象，使用现有的对象来提供新创建的对象的__proto__
 
 如下例所示，obj1作为了b的__proto__。

@@ -1,5 +1,8 @@
 # 阅读axios.js源码
 
+[tag]:记录|js|源码
+[create]:2019-10-28
+
 记录在阅读axios源码时发现的一些亮点：
 
 1. 看入口文件axios.js，可以注意到一个axios实例并不是通过new一个实例来生成的，而是通过axios自身的一个方法，叫`axios.create`

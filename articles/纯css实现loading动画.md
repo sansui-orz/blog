@@ -1,7 +1,7 @@
 # 纯css实现loading动画
 
-[tag]:css/loading/html
-[time]:2020-01-01
+[tag]:css|loading|html
+[create]:2019-12-13
 
 ![效果](./imgs/20200805151032.jpg)
 

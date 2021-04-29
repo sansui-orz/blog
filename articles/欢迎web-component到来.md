@@ -1,5 +1,8 @@
 # 欢迎Web Component到来
 
+[tag]:html|js|component
+[create]:2020-08-03
+
 web component是谷歌一直在推进的浏览器原生组件，相对于react/vue/angular等框架，它优点在于没有依赖，代码量小，且工作模式简单。
 
 根据目前兼容性来看，已经可以适当的运用于生产环境了。未来会不会发展出不依赖任何编译能力的基于web component的mvvm或者类似的框架也说不定，我还是很看好它的。

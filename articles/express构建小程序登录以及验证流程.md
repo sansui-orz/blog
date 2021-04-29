@@ -1,6 +1,9 @@
+# express构建小程序登录以及验证流程
 
+[tag]:express|miniapp|auth
+[create]:2019-03-05
 
-###### 小程序端
+## 小程序端
 
 app.js
 ```
@@ -29,8 +32,8 @@ App({
 });
 ```
 
-###### node后端
-##### 安装依赖
+## node后端
+### 安装依赖
 
 ```
 npm install --save express jsonwebtoken request-promise body-parser

@@ -1,4 +1,7 @@
-### 关于setTimeout的多个参数以及其返回值
+# 关于setTimeout的多个参数以及其返回值
+
+[tag]:记录|js|setTimeout
+[create]:2019-11-11
 
 关于setTimeout，我们，大部分人使用的时候可能都是这样:
 

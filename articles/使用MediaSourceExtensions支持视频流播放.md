@@ -1,5 +1,8 @@
 # 使用Media Source Extensions支持视频流播放
 
+[tag]:video|MSE|stream
+[create]:2020-08-24
+
 [Media Source Extensions](https://developer.mozilla.org/zh-CN/docs/Web/API/Media_Source_Extensions_API)提供了实现无插件且基于 Web 的流媒体的功能。
 
 简单来说，MSE起到video标签与视频流数据之间桥梁的作用。
