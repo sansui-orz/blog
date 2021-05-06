@@ -15,9 +15,12 @@
 
 <body>
   <header><a href="/blog/">Hey, MAOSHENG!!!</a></header>
+  <div class="tags">{tags}</div>
   <div class="body">
     <div class="content">{body}</div>
-    <aside></aside>
+    <aside>{menu}</aside>
+    <div class="create-time">发表于: {createtime}</div>
+    <hr />
   </div>
   <div id="gitalk-container"></div>
   <script async onload="hljs.highlightAll();" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
@@ -31,7 +34,7 @@
         owner: 'sansui-orz',
         admin: ['sansui-orz'],
         id: 'gitalk-id',
-        distractionFreeMode: false  // Facebook-like distraction free mode
+        distractionFreeMode: false
       })
 
       gitalk.render('gitalk-container');
