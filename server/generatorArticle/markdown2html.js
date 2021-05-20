@@ -69,7 +69,10 @@ async function readArticlesList() {
 async function writeArticle(id, title, filepath, articleDetail) {
   try {
     const htmlCode = await markdown2html({
-      path: filepath
+      path: filepath,
+      options: {
+        linkify: false
+      }
     });
     await fsPromises.writeFile(
       path.resolve(__dirname, '../public/article', id),
@@ -82,7 +85,12 @@ async function writeArticle(id, title, filepath, articleDetail) {
         .replace('{body}', renderTitleIdMap(htmlCode, articleDetail.menu)
           .replace(/"\.\/imgs\//g, '"../imgs/')
           .replace('language-tsx', 'javascript')
-          .replace(/\.\.\/demos/g, 'https://sansui-orz.github.io/blog/demos')));
+          .replace(/\.\.\/demos/g, 'https://sansui-orz.github.io/blog/demos')
+          .replace(/\.\/(.*)\.md/g, function (_, targetStr, __, originStr) {
+            console.log('找到了 ====> ', decodeURIComponent(targetStr), title);
+            return originStr.replace(`${targetStr}.md`, crypto.createHash('md5').update(decodeURIComponent(targetStr)).digest('hex'));
+          })
+        ));
   } catch (err) {
     console.log('生成文章失败: ', err);
     console.log(filepath);
