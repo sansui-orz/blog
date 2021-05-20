@@ -136,7 +136,7 @@ var userInfo = {
  * @property {T} name 名字
  * @property {N} age 年龄
  *
- * @typedef {{sex: string} & UserInfo<string, number>} UserInfoSex
+ * @typedef {{ sex: string } & UserInfo<string, number>} UserInfoSex
  *
  */
 
@@ -157,7 +157,7 @@ var userInfo = {
 
 /**
  * @template T, N
- * @typedef {{name: T, age: N}} UserInfo
+ * @typedef {{ name: T, age: N }} UserInfo
  */
 
 module.exports = {};
@@ -169,7 +169,7 @@ module.exports = {};
 // @ts-check
 
 /**
- * @typedef {{sex: string} & import('./a.js').UserInfo<string, number>} UserInfoSex
+ * @typedef {{ sex: string } & import('./a.js').UserInfo<string, number> } UserInfoSex
  *
  */
 
@@ -200,7 +200,7 @@ function userInfo(name, age=10) {
 
 /**
  * 使用这种方式定义方法时，定义参数会失效，比如下例，不传age就会报错
- * @type {(name: string, age？: number) => string}
+ * @type { (name: string, age？: number) => string }
  */
 function userInfo2(name, age) { // 解决这个问题可以给age设置默认值，例如age=10
   return `名字叫${name}, 年龄是${age}`;
@@ -232,11 +232,11 @@ function userInfo(name, age, ...other) {
  * @typedef UserInfo
  * @property {string} name 名字
  * @property {number} age 年龄
- * @property {() => void} say 方法
+ * @property { () => void } say 方法
  */
 
 /**
- * @typedef {{username: string}} UserName
+ * @typedef {{ username: string; }} UserName
  */
 
 /** @type {UserInfo} */
