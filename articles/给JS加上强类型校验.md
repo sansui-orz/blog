@@ -136,7 +136,7 @@ var userInfo = {
  * @property {T} name 名字
  * @property {N} age 年龄
  *
- * @typedef {{ sex: string } & UserInfo<string, number>} UserInfoSex
+ * @typedef { { sex: string } & UserInfo<string, number> } UserInfoSex
  *
  */
 
@@ -169,7 +169,7 @@ module.exports = {};
 // @ts-check
 
 /**
- * @typedef {{ sex: string } & import('./a.js').UserInfo<string, number> } UserInfoSex
+ * @typedef { { sex: string } & import('./a.js').UserInfo<string, number> } UserInfoSex
  *
  */
 
@@ -236,7 +236,7 @@ function userInfo(name, age, ...other) {
  */
 
 /**
- * @typedef {{ username: string; }} UserName
+ * @typedef {{username: string;}} UserName
  */
 
 /** @type {UserInfo} */
