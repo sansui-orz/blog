@@ -4,6 +4,8 @@
 
 ## 目录
 
+- [给JS加上强类型校验](./articles/给JS加上强类型校验.md)
+
 - [解决puppeteer无法在docker容器中运行](./articles/解决puppeteer无法在docker容器中运行.md)
 
 - [Bilibili全景视频原理](./articles/Bilibili全景视频原理.md)
