@@ -86,9 +86,8 @@ async function writeArticle(id, title, filepath, articleDetail) {
           .replace(/"\.\/imgs\//g, '"../imgs/')
           .replace('language-tsx', 'javascript')
           .replace(/\.\.\/demos/g, 'https://sansui-orz.github.io/blog/demos')
-          .replace(/\.\/(.*)\.md/g, function (_, targetStr, __, originStr) {
-            console.log('找到了 ====> ', decodeURIComponent(targetStr), title);
-            return originStr.replace(`${targetStr}.md`, crypto.createHash('md5').update(decodeURIComponent(targetStr)).digest('hex'));
+          .replace(/\.\/(.*)\.md/g, function (str, targetStr) {
+            return str.replace(`${targetStr}.md`, crypto.createHash('md5').update(decodeURIComponent(targetStr)).digest('hex'));
           })
         ));
   } catch (err) {
