@@ -46,11 +46,7 @@
 
 - [跨页面通信](./articles/多个tab页之间通信.md)
 
-- [sendBeacon了解一下](./articles/零碎/sendBeacon了解一下.md)
-
 - [node如何在终端提问](./articles/零碎/node如何在终端提问.md)
-
-- [深拷贝的简单实现](./articles/零碎/深拷贝的简单实现.md)
 
 - [typescript学习笔记](./articles/typescript学习笔记.md)
 

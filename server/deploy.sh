@@ -11,4 +11,8 @@ cp -R ./public ./dist
 pm2 stop blog
 
 # 使用pm2启动服务
-pm2 start ./dist/index.js --name blog --exp-backoff-restart-delay=100 -f
+pm2 start ./dist/index.js -o ./out.log -e ./err.log --name blog --exp-backoff-restart-delay=100 -f
+
+# pm2 restart blog
+
+echo "server deploy success, open: http://127.0.0.1:3011"

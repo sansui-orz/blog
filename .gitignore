@@ -11,4 +11,5 @@ server/public/article
 server/public/imgs
 server/public/home.html
 
-server/config/github.js
+server/config/*
+server/*.log

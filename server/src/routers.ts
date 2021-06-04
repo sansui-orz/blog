@@ -5,4 +5,5 @@ const apis = require('./apis');
 
 module.exports = function (app: Koa, router: Router) {
   router.get('/', apis.home);
+  router.get('/restart', apis.restart);
 };
