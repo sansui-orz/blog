@@ -1,5 +1,5 @@
 import * as Koa from 'koa';
-import { execFileSync, execSync } from 'child_process';
+import { execSync } from 'child_process';
 const path = require('path');
 const cache = require('../utils/cache');
 const querystring = require('querystring');
@@ -20,11 +20,12 @@ module.exports = async function (ctx: Koa.Context) {
       console.log('密码错误', times);
       return;
     }
-    const std = await execSync(`sh ${ path.resolve('restart.sh') }`); // execFileSync(path.resolve('restart.sh'), { shell: true });
+    const std = await execSync(`sh ${ path.resolve('restart.sh') }`);
     console.log('标准输出', std.toString());
     ctx.body = {
       code: 200,
       msg: '重启成功',
+      status: std.toString(),
       success: true
     };
   } catch (err) {
