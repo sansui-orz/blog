@@ -10,6 +10,8 @@ server/dist
 server/public/article
 server/public/imgs
 server/public/home.html
+server/public/home.html
+server/public/*.html
 
 server/config/*
 server/*.log
