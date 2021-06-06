@@ -20,7 +20,7 @@ module.exports = async function (ctx: Koa.Context) {
       console.log('密码错误', times);
       return;
     }
-    const std = await execSync(`sh ${ path.resolve('restart.sh') }`);
+    const std = await execSync(`bash ${ path.resolve('restart.sh') }`);
     console.log('标准输出', std.toString());
     ctx.body = {
       code: 200,

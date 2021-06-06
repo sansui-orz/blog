@@ -16,3 +16,4 @@ if [[ $lastMessage =~ $noCommit ]]; then
     exit
 fi
 echo "代码有变更，请检查本地代码变更！"
+exit
