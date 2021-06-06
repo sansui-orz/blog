@@ -1,3 +1,5 @@
+#! /bin/bash
+
 lastMessage=`git status | tail -n 2`
 #nothing to commit, working tree clean 本地没有变化
 noCommit='nothing to commit'
