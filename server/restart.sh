@@ -5,8 +5,6 @@ lastMessage=`git status | tail -n 2`
 noCommit='nothing to commit'
 
 if [[ $lastMessage =~ $noCommit ]]; then
-    git pull
-
     sh ./restart2.sh &
 
     pid=$!
