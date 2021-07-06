@@ -2,7 +2,9 @@
 
 👉 [自建博客](https://www.lmsdelck.xyz/)
 
-## 目录
+##
+
+- [阿里外包总结](./articles/阿里外包总结.md)
 
 - [给JS加上强类型校验](./articles/给JS加上强类型校验.md)
 
