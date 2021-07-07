@@ -1,15 +1,15 @@
 {
-  "name": "server",
+  "name": "blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "李茂生的个人博客，用以记录生活与技术",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run dev",
-    "dev": "npm run generator & node dev.js & nodemon --watch ./ -e ts --exec \"ts-node\" ./index.ts",
-    "build": "tsc --project tsconfig.json",
-    "generator": "sh generatorArticle/generator.sh",
-    "deploy": "sh deploy.sh",
+    "dev": "npm run generator & node server/dev.js & nodemon --watch ./server -e ts --exec \"ts-node\" ./server/index.ts",
+    "build": "tsc --project server/tsconfig.json",
+    "generator": "sh server/generatorArticle/generator.sh",
+    "deploy": "sh server/deploy.sh",
     "stop": "pm2 stop blog"
   },
   "author": "",

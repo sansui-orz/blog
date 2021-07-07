@@ -14,7 +14,7 @@ require('./src/routers')(app, koaRouter);
 
 app
   .use(koaRouter.routes())
-  .use(koaStatic('./public', {
+  .use(koaStatic(path.join(__dirname, './public'), {
     setHeaders(ctx: Koa.Context, path: string) {
       // 文章直接走静态代理
       if (/.+\/article\/[a-z0-9]+$/.test(path)) {

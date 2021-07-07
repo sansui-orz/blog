@@ -2,9 +2,9 @@ const markdown2html = require('markdown-into-html');
 const fs = require('fs');
 const fsPromises = fs.promises;
 const path = require('path');
-const crypto = require('crypto');
+const _crypto = require('crypto');
 const { Octokit } = require('@octokit/core');
-const { token } = require('../config/github');
+const { github: { token } } = require('../src/config/config.default');
 const { once } = require('events');
 const readline = require('readline');
 
@@ -20,10 +20,10 @@ async function readArticlesList() {
   const matchObj = listStr.match(/- \[.+\]\(.+\.md\)\n/g);
   const issuesRecord = JSON.parse(fs.existsSync(ISSUESMAP_PATH) ? fs.readFileSync(ISSUESMAP_PATH) : '{}');
   const issuesPromises = [];
-  const listHtml = matchObj.map(async item => {
+  const listHtml: any[] = matchObj.map(async item => {
     const _matchObj = item.match(/^-\s\[(.+)\]\((.+)\)/);
     const filepath = path.resolve(__dirname, '../../', _matchObj[2]);
-    const id = crypto.createHash('md5').update(_matchObj[1]).digest('hex');
+    const id = _crypto.createHash('md5').update(_matchObj[1]).digest('hex');
     const articleDetail = await matchArticleDetail(filepath);
     writeArticle(id, _matchObj[1], filepath, articleDetail);
 
@@ -35,7 +35,7 @@ async function readArticlesList() {
       detail: articleDetail
     };
   });
-  const sortList = (await Promise.all(listHtml)).sort((pre, nxt) => {
+  const sortList = (await Promise.all(listHtml)).sort((pre: any, nxt: any) => {
     const arr = ['year', 'month', 'day'];
     for (let i = 0; i < 3; i++) {
       if (+pre.detail[arr[i]] > +nxt.detail[arr[i]]) {
@@ -87,7 +87,7 @@ async function writeArticle(id, title, filepath, articleDetail) {
           .replace('language-tsx', 'javascript')
           .replace(/\.\.\/demos/g, 'https://sansui-orz.github.io/blog/demos')
           .replace(/\.\/(.*)\.md/g, function (str, targetStr) {
-            return str.replace(`${targetStr}.md`, crypto.createHash('md5').update(decodeURIComponent(targetStr)).digest('hex'));
+            return str.replace(`${targetStr}.md`, _crypto.createHash('md5').update(decodeURIComponent(targetStr)).digest('hex'));
           })
         ));
   } catch (err) {
@@ -148,7 +148,7 @@ async function matchArticleDetail(filename) {
         menu.push({
           title: match[2],
           level: match[1].length - 1,
-          id: crypto.createHash('md5').update(match[2]).digest('hex'),
+          id: _crypto.createHash('md5').update(match[2]).digest('hex'),
         });
       }
     });

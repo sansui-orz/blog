@@ -3,7 +3,7 @@ import { execSync } from 'child_process';
 const path = require('path');
 const cache = require('../utils/cache');
 const querystring = require('querystring');
-const config = require(path.resolve('config/config.default.js'));
+const config = require(path.join(__dirname, '../config/config.default'));
 const KEY = 'restart-error-times';
 
 module.exports = async function (ctx: Koa.Context) {
@@ -20,7 +20,7 @@ module.exports = async function (ctx: Koa.Context) {
       console.log('密码错误', times);
       return;
     }
-    const std = await execSync(`bash ${ path.resolve('restart.sh') }`);
+    const std = await execSync(`bash ${ path.join(__dirname.split('server')[0], 'server/restart.sh') }`);
     console.log('标准输出', std.toString());
     ctx.body = {
       code: 200,

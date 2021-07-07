@@ -13,5 +13,5 @@ server/public/home.html
 server/public/home.html
 server/public/*.html
 
-server/config/*
+server/src/config/*
 server/*.log

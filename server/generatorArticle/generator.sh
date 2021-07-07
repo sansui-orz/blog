@@ -1,9 +1,9 @@
-rm -r public/article
-rm -r public/imgs
+rm -r server/public/article
+rm -r server/public/imgs
 
-mkdir public/article
-mkdir public/imgs
+mkdir server/public/article
+mkdir server/public/imgs
 
-node generatorArticle/markdown2html.js
+ts-node server/generatorArticle/markdown2html.ts
 
-cp -R ../articles/imgs public
+cp -R ./articles/imgs server/public
