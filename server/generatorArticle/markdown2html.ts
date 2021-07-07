@@ -4,7 +4,8 @@ const fsPromises = fs.promises;
 const path = require('path');
 const _crypto = require('crypto');
 const { Octokit } = require('@octokit/core');
-const { github: { token } } = require('../src/config/config.default');
+// const { github: { token } } = require('../src/config/config.default');
+const token = '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';
 const { once } = require('events');
 const readline = require('readline');
 
