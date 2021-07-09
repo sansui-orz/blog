@@ -33,7 +33,7 @@ class2则是先移动100px，然后再缩小一倍
 
 似乎这两个逻辑也没问题，但是请看下图:
 
-![tansform](../imgs/20200623182410.jpg)
+![tansform](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200623182410.jpg)
 
 从这个图中可以分析出浏览器绘制时的流程：
 
@@ -43,7 +43,7 @@ class2则是先移动100px，然后再缩小一倍
 4. 移动后缩小，所以最后是100px + 100 * 0.5 / 2 = 125px;
 
 可能下图看上去会更加明了：
-![transform2](../imgs/20200623184149.jpg)
+![transform2](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200623184149.jpg)
 
 ## 所以
 
@@ -53,7 +53,7 @@ class2则是先移动100px，然后再缩小一倍
 
 例子:
 
-![transform3](../imgs/20200628140447.jpg)
+![transform3](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200628140447.jpg)
 
 ## 最终
 

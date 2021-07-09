@@ -15,13 +15,13 @@
 
 其实环境的配置非常简单，只需要VS Code开启了js验证:
 
-![js验证](./imgs/WX20210516-232332.png)
+![js验证](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/WX20210516-232332.png)
 
 这个默认就是开启的。
 
 之后在js代码中第一行增加`// @ts-check`就成功开启了类型校验了，非常简单。
 
-![demo-1](./imgs/WX20210516-232835.png)
+![demo-1](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/WX20210516-232835.png)
 
 当然，如果不想要每个js文件都去加这个注释也可以直接写一个`jsconfig.json`文件(其实`tsconfig.json`也可以，打开`allowJs`就好了，记得安装typescript依赖),然后就可以全局的开启类型校验了。但是并不建议这么做，因为对于老项目来说，一个一个的文件去更改会更为方便且稳妥，而对于新项目来说直接用ts就好啦，用了一圈下来还是觉得这个的方便性以及功能还是不如ts强大的。
 

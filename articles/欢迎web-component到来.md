@@ -7,7 +7,7 @@ web component是谷歌一直在推进的浏览器原生组件，相对于react/v
 
 根据目前兼容性来看，已经可以适当的运用于生产环境了。未来会不会发展出不依赖任何编译能力的基于web component的mvvm或者类似的框架也说不定，我还是很看好它的。
 
-![custom elements v1](./imgs/20200731180911.jpg)
+![custom elements v1](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200731180911.jpg)
 
 ## web component的简单使用
 
@@ -44,7 +44,7 @@ window.customElements.define('user-info', UserInfo);
 
 渲染出来的效果如下:
 
-![渲染1](./imgs/20200803142536.jpg)
+![渲染1](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200803142536.jpg)
 
 ## 使用template
 
@@ -99,7 +99,7 @@ window.customElements.define('user-info', UserInfo);
 
 使用了Shadow DOM之后再看dom结构是这样的
 
-![shadow](./imgs/20200803174033.jpg)
+![shadow](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200803174033.jpg)
 
 并且你会发现img的样式不起效了，这是因为Shadow DOM中的任何DOM都不会影响到DOM树，相应的也无法应用到外部样式（这点存疑，我在 chrome上测试确实无法使用外部样式）。
 

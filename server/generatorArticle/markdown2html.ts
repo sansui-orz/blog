@@ -84,7 +84,7 @@ async function writeArticle(id, title, filepath, articleDetail) {
         .replace('{menu}', renderMenu(articleDetail.menu))
         .replace('{createtime}', `${articleDetail.year}-${articleDetail.month}-${articleDetail.day}`)
         .replace('{body}', renderTitleIdMap(htmlCode, articleDetail.menu)
-          .replace(/"\.\/imgs\//g, '"../imgs/')
+          .replace(/"\.\/imgs\//g, '"https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/')
           .replace('language-tsx', 'javascript')
           .replace(/\.\.\/demos/g, 'https://sansui-orz.github.io/blog/demos')
           .replace(/\.\/(.*)\.md/g, function (str, targetStr) {

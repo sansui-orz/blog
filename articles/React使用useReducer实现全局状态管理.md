@@ -3,7 +3,7 @@
 [tag]:react|hook|store
 [create]:2020-09-22
 
-![示例](./imgs/reducer-demo.gif)
+![示例](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/reducer-demo.gif)
 [最终效果]
 
 最近终于空出时间来打算仔细学习一下Hooks。打开文档的时候就想到一个问题“如何用Hooks实现一个全局状态管理“，之前似乎听到过同事说过有这么一回事，当时只觉得有些惊奇，原来hooks已经可以实现全局状态管理了吗？
@@ -56,7 +56,7 @@ function Counter() {
 
 ## 单独使用useReducer实现（行不通）
 
-![useReducer示意图](./imgs/useReducer.drawio.png)
+![useReducer示意图](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/useReducer.drawio.png)
 
 上图是具体的示意图，当页面1和页面2使用同一份数据(`globalData`)和同一个数据处理函数(`function reducer`)时，当页面1修改了数据，那么页面2使用时拿到的肯定也是最新的那份数据。这样就做到了页面共享数据的效果了。
 
@@ -84,7 +84,7 @@ function Counter() {
 
 总的来说，我们只需要提供这几点的服务，一个简单的全局状态管理组件就完成了。
 
-![reducer示意图](./imgs/quanjuzhuangtaiguanli.drawio.png)
+![reducer示意图](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/quanjuzhuangtaiguanli.drawio.png)
 
 如上示意图，首先我们实现一下`Provider`组件：
 

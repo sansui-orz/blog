@@ -60,7 +60,7 @@ FAST是基于Web组件和现代Web标准构建的技术集合。其主要包含�
 
 其展现效果如下图：
 
-![1](./imgs/20200915155531.jpg)
+![1](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200915155531.jpg)
 
 对于使用这类组件库，基本都是一些中后台的管理系统，而`@fluentui/web-components`与`@microsoft/fast-components`在这方面的优势则是在于其编译简单，如上面的调用，并不需要使用webpack或者gulp进行代码转移，使用简单，但是缺点也比较明显，对于业务的特殊定制不友好且数据操作的变化比较困难（看官方实例是用原生js操作dom进行数据变更），这也是fast还不成熟的一个表现。
 
@@ -272,7 +272,7 @@ export default class List extends FASTElement {
 
 效果如下：
 
-![效果](./imgs/20200915172456.jpg)
+![效果](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200915172456.jpg)
 
 ## 总结
 

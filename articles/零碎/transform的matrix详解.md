@@ -16,7 +16,7 @@ css的`transform`属性中有个比较特殊的，少用的值是`matrix`（矩�
 ```
 
 它实际上对于坐标的转化公式是这样的：
-![transform2](../imgs/20200703163158.jpg)
+![transform2](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200703163158.jpg)
 
 可以知道我们转化后的坐标是：`[a * x + c * y + e, b * x + d * y + f]`
 
