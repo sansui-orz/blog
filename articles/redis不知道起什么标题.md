@@ -7,7 +7,7 @@ redis产生的原因在于优化mysql对于日益增长的数据处理需求的�
 
 redis是一个内存中键值数据库，因此它可以非常快速的检索数据。
 
-![redius](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/redis.drawio.png)
+![redius](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/redis.drawio.png!trans_webp)
 
 redis的作用如上图，它主要应用场景就在于重复的数据查询操作时，提供数据缓存，用以减少响应时间以及优化程序性能。
 

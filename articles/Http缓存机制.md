@@ -53,4 +53,4 @@ private（仅允许浏览器缓存）
 
 **HTTP缓存流程图:**
 
-![图片404](https://files-1255982271.cos.ap-guangzhou.myqcloud.com/940884-20180423141951735-912699213.png)
+![图片404](https://files-1255982271.cos.ap-guangzhou.myqcloud.com/940884-20180423141951735-912699213.png!trans_webp)

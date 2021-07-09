@@ -11,4 +11,4 @@ Element.closest用来获取：匹配特定选择器且离当前元素最近的�
 
 但是closest的兼容性并不好。
 
-![closest兼容性](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200814113645.jpg)
+![closest兼容性](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200814113645.jpg!trans_webp)

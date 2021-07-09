@@ -52,7 +52,7 @@ module.exports = 'test-file-stub';
 ```
 
 然后开始写测试逻辑。为了做测试，先写了一个todoList的组件。
-![todolist](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200714172705.jpg)
+![todolist](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200714172705.jpg!trans_webp)
 
 todolist组件主要包含两个自组件，一个就是整个的List，还有Item
 
@@ -85,7 +85,7 @@ toMatchSnapshot方法，会在同级目录下生成一个__snapshots文件夹用
 
 然后给package.json的scripts加一个`“test”: "test": "jest --config test.config.js"`。在终端输入`npm run test`就可以跑起来了。
 
-![跑item.test.js](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200714174247.jpg)
+![跑item.test.js](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200714174247.jpg!trans_webp)
 
 ## 编写List组件的测试
 List组件相比于item组件要复杂一点，所以将整个list的验证拆分为几部分完成
@@ -251,7 +251,7 @@ jest的测试覆盖率的配置十分简单，只需要在test.config.js里面�
 
 最终运行代码就会生成如下的覆盖率报告了。
 
-![覆盖率报告](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200715104254.jpg)
+![覆盖率报告](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200715104254.jpg!trans_webp)
 
 THE END.
 

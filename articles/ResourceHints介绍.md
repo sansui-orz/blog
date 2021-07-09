@@ -17,11 +17,11 @@ Respirce Hints规范定义了`<link>`标签的`dns-prefetch`, `preconnect`, `pre
 
 当浏览器识别到dns-prefetch的标识时，尽管它不知道如何使用该域名，也会尽快解析。
 
-![未使用dns-prefetch](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/dns-prefetch01.jpg)
+![未使用dns-prefetch](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/dns-prefetch01.jpg!trans_webp)
 
 上图为未使用dns-prefetch是的请求情况，可以看到dns解析时间占了总请求时间的一半。
 
-![使用了dns-prefetch](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/dns-prefetch02.jpg)
+![使用了dns-prefetch](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/dns-prefetch02.jpg!trans_webp)
 
 使用了dns-prefetch后，很明显的看到请求时间变短了。
 
@@ -39,7 +39,7 @@ Respirce Hints规范定义了`<link>`标签的`dns-prefetch`, `preconnect`, `pre
 
 第二个需要注意的点是，在http 1.1中，虽然keep-alive能保持链接不被关闭，但是每个链接仅能传输一个http请求，只有在http2中只吃了多路复用的问题之后，才能达到preconnect的最佳实践效果。
 
-![preconnect](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/preconnect.jpg)
+![preconnect](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/preconnect.jpg!trans_webp)
 
 可以看到，使用了preconnect之后连续发送三个请求，只有第一个命中了connect，后面两个仍然是新建一个connect。
 
@@ -53,9 +53,9 @@ prefetch会以最低的优先级去下载资源，它下载完成的时机是无
 <link rel="prefetch" href="https://example.com/news/?page=2" as="document">
 ```
 
-![prefetch实践1](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/prefetch01.jpg)
+![prefetch实践1](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/prefetch01.jpg!trans_webp)
 
-![prefetch实践2](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/prefetch02.jpg)
+![prefetch实践2](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/prefetch02.jpg!trans_webp)
 
 从上面两张图可以看出，当prefetch之后再次使用该资源会直接使用缓存内容，而prefetch发起请求的实际是当请求空闲的时候。
 
@@ -89,7 +89,7 @@ prefetch会以最低的优先级去下载资源，它下载完成的时机是无
 
 当解析到preload时，浏览器会尽快加载该资源。
 
-![preload1](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/preload1.jpg)
+![preload1](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/preload1.jpg!trans_webp)
 
 可以看到preload资源在dom解析完成前就已经发出了。（img标签资源会在dom解析是发出，所以preload应该也是遇到就发出）
 
@@ -103,7 +103,7 @@ prefetch会以最低的优先级去下载资源，它下载完成的时机是无
 
 还需要注意的点是，这些优化手段与其他方式结合将会更加有效，比如preload加载资源时，如果同时加载十几二十个同域的资源，则会触发浏览器同域下最大并发数的限制（据我所知，chrome是6个），此时如果结合将资源部署到不同域名下的策略的话，那么就可以同时发出这么多请求，本来需要等待(n/x)时间，修改之后则只需要(n/n)的时间。
 
-![拆分域名](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/split-domain.jpg)
+![拆分域名](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/split-domain.jpg!trans_webp)
 
 可以看到，拆分域名之后，`cdn-brilio-net.akamaized.net`达到了最大并发数（6个）的限制，但是`hl-img.peco.uodoo.com`域名下的请求并不受影响。
 

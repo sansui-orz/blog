@@ -3,7 +3,7 @@
 [tag]:css|loading|html
 [create]:2019-12-13
 
-![效果](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200805151032.jpg)
+![效果](https://lms-flies.oss-cn-guangzhou.aliyuncs.com/blog/imgs/20200805151032.jpg!trans_webp)
 
 [源码](../demos/loading.html)
 
