@@ -6,4 +6,4 @@ mkdir server/public/imgs
 
 ts-node server/generatorArticle/markdown2html.ts
 
-cp -R ./articles/imgs server/public
+# cp -R ./articles/imgs server/public

@@ -62,9 +62,9 @@ async function readArticlesList() {
     finalHtmlStr += item.html;
   });
   finalHtmlStr += '</ul></li></ul>';
-  await Promise.all(issuesPromises);
   await fsPromises.writeFile(ISSUESMAP_PATH, JSON.stringify(issuesRecord));
   await fsPromises.writeFile(path.resolve(__dirname, '../public/home.html'), homeTemplate.replace('{body}', finalHtmlStr));
+  await Promise.all(issuesPromises);
 }
 
 async function writeArticle(id, title, filepath, articleDetail) {
