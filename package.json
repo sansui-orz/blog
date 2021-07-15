@@ -1,6 +1,6 @@
 {
   "name": "blog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "李茂生的个人博客，用以记录生活与技术",
   "main": "index.js",
   "scripts": {
