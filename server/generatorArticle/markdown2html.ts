@@ -4,8 +4,7 @@ const fsPromises = fs.promises;
 const path = require('path');
 const _crypto = require('crypto');
 const { Octokit } = require('@octokit/core');
-// const { github: { token } } = require('../src/config/config.default');
-const token = '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';
+const { github: { token } } = require('../src/config/config.default');
 const { once } = require('events');
 const readline = require('readline');
 
@@ -62,9 +61,9 @@ async function readArticlesList() {
     finalHtmlStr += item.html;
   });
   finalHtmlStr += '</ul></li></ul>';
+  await Promise.all(issuesPromises);
   await fsPromises.writeFile(ISSUESMAP_PATH, JSON.stringify(issuesRecord));
   await fsPromises.writeFile(path.resolve(__dirname, '../public/home.html'), homeTemplate.replace('{body}', finalHtmlStr));
-  await Promise.all(issuesPromises);
 }
 
 async function writeArticle(id, title, filepath, articleDetail) {
