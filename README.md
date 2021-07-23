@@ -4,6 +4,8 @@
 
 ##
 
+- [如何通过js判断设备是否支持某种字体](./articles/如何通过js判断设备是否支持某种字体.md)
+
 - [三体-yyds](./articles/三体-yyds.md)
 
 - [电影-洛克](./articles/电影-洛克.md)
