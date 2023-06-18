@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3d球体</title>
+  <style>
+    html, body {
+        width: 100vw;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+  </style>
+</head>
+
+<body style="padding: 20px;">
+  <canvas id="glcanvas" width="648" height="448"></canvas>
+  <div style="display:none;">
+    环境光因子：
+    <input id="ambientFactor" class="range" type="range" min="0" max="1" step="0.01" value="0.9" /> 
+  </div>
+  <div style="margin-top: 20px;">
+    精密度:
+    <input id="a" class="range" type="range" min="5" max="15" step="1" value="5" /> 
+    <span id="num">5</span>
+  </div>
+  <div style="margin-top: 20px;">
+    大小:
+    <input id="b" class="range" type="range" min="2" max="5" step="1" value="3" /> 
+  </div>
+  <div style="display:none;">
+      光线颜色：
+      <input id="lightColor" class="color" type="color" value="#FFFFFF" />
+  </div>
+  <script type="shader-source" id="vertexShader">
+    // 设置浮点精度为中等精度
+    precision mediump float;
+    // 接收点在canvas坐标系的坐标
+    attribute vec3 a_Position;
+    // 接收canvas的宽高
+    attribute vec2 a_Screen_Size;
+    // 接收颜色
+    attribute vec4 a_Color;
+    // 透传颜色
+    varying vec4 v_Color;
+    // 正交投影矩阵（懵）
+    uniform mat4 u_Matrix;
+    void main() {
+      gl_Position = u_Matrix * vec4(a_Position, 1.0);
+      // gl_Position = vec4(a_Position, 1.0);
+      // 透传颜色
+      v_Color = a_Color;
+    }
+  </script>
+  <script type="shader-source" id="fragmentShader">
+    // 设置浮点精度为中等精度
+    precision mediump float;
+    // 接收从顶点着色器透传过来的颜色
+    varying vec4 v_Color;
+    // 光源颜色
+    uniform vec3 u_lightColor;
+    // 光源强度
+    uniform float u_AmbientFactor;
+    void main() {
+      // 环境光强度与颜色相乘
+      vec3 ambientColor = u_lightColor * u_AmbientFactor;
+      // 将不同的颜色表示转换成webgl的颜色表示【0，1】
+      vec4 color = v_Color / vec4(255, 255, 255, 1);
+      // 结合环境光
+      gl_FragColor = color * vec4(ambientColor, 1);
+    }
+  </script>
+  <script id="webgl-helper">
+    /**
+     * 创建着色器
+     * @this gl
+     * @param shaderType 着色器类型
+     * @param sourceId 着色器源码id
+     * @return shader 着色器
+    */
+    function createShader(shaderType, sourceId) {
+      // 获取着色器源码
+      var shaderSource = document.querySelector(sourceId).innerHTML;
+      // 创建着色器
+      var shader = this.createShader(shaderType);
+      // 将源码与着色器绑定
+      this.shaderSource(shader, shaderSource);
+      // 编译着色器
+      this.compileShader(shader);
+      return shader;
+    }
+
+    /**
+     * 创建着色器程序&绑定着色器
+     * @this gl
+     * @param arguments 着色器数组
+     * @return program 着色器程序
+    */
+    function createProgram() {
+      // 创建周色器程序
+      var program = this.createProgram();
+      for (var i = 0; i < arguments.length; i++) {
+        // 将着色器挂在着色器程序上
+        this.attachShader(program, arguments[i]);
+      }
+      // 连接着色器程序
+      this.linkProgram(program);
+      return program;
+    }
+    /**
+    * @param x 圆心坐标
+    * @param y 圆心坐标
+    * @param outerRadius 外圆半径
+    * @param innerRadius 内圆半径
+    * @param n 拆分的三角形个数
+    * @return { positions, indices } 坐标与索引
+    */
+    var sin = Math.sin;
+    var cos = Math.cos;
+    function createRingVertex(x, y, outerRadius, innerRadius, n) {
+      var positions = [];
+      for (var i = 0; i < n; i++) {
+        var angle = i * Math.PI * 2 / n;
+        var color = getRandomColor();
+        var inner = [x + innerRadius * cos(angle), y + innerRadius * sin(angle)].concat(color);
+        var outter = [x + outerRadius * cos(angle), y + outerRadius * sin(angle)].concat(color);
+        positions = positions.concat(inner, outter);
+      }
+      var indices = [];
+      for (var j = 0, len = (positions.length / 6); j < len; j += 2) {
+        indices.push(
+          j, j + 1, (j + 2) % len,
+          (j + 2) % len, j + 1, (j + 3) % len,
+        );
+      }
+      return { positions: positions, indices: indices };
+    }
+    function getRandomColor() {
+      const random = () => Math.random() * 255;
+      return [random(), random(), random(), 1];
+    }
+
+  </script>
+  <script src="./helper.js"></script>
+  <script>
+    // 生成一个正方体顶点数据
+    function createCube(sideLen) {
+      var sl = sideLen / 2;
+      var points = [
+        -sl, -sl, sl,
+        sl, -sl, sl,
+        sl, sl, sl,
+        -sl, sl, sl,
+        -sl, -sl, -sl,
+        -sl, sl, -sl,
+        sl, sl, -sl,
+        sl, -sl, -sl,
+      ];
+      var colors = [
+        [255, 0, 0, 1], // 正
+        [0, 255, 0, 1], // 左
+        [0, 0, 255, 1], // 上
+        [255, 255, 0, 1], // 右
+        [255, 0, 255, 1], // 下
+        [0, 255, 255, 1], // 后
+      ];
+      /**
+      * 需要注意的是，判断一个面是否是正面，是根据其绘制时，顶点顺序判断的
+      * 顶点顺序为逆时针，则是正面
+      * 反之则是反面
+      */
+      var indices = [
+        0, 1, 2, // 正面
+        0, 2, 3,
+        4, 0, 3, // 左边
+        4, 3, 5,
+        3, 2, 6, // 上面
+        3, 6, 5,
+        1, 7, 6, // 右面
+        1, 6, 2,
+        4, 7, 1, // 下边
+        4, 1, 0,
+        7, 4, 5, // 后面
+        7, 5, 6,
+      ];
+      var _points = [];
+      for (var i = 0; i < indices.length; i++) {
+        var index = indices[i] * 3;
+        _points = _points.concat([points[index], points[index + 1], points[index + 2]], colors[Math.floor(i / 6)]);
+      }
+      return _points;
+    }
+    /** 生成一个球体的所有顶点坐标与索引，假设原点为0，0
+      * @param radius 球的半径
+      * @param divideByY 将球体水平分成多少份
+      * @param divideByCircle 将水平圆切面分成几分
+      */
+    function createSphere(radius, divideByY, divideByCircle) {
+      //（这里应该用角度来度量，因为一个圆的表面上的顶点应该是均匀分布的，如果使用y轴的大小来分层的话，那把圆翻个面，圆的表面看上去就不是均匀分布了）
+      var yUnitAngle = Math.PI / divideByY; // Y层，一层对应的夹角
+      var angle = (Math.PI * 2) / divideByCircle; // 切圆的每个三角形的角度
+      var positions = [];
+      positions.push([[0, -radius, 0]]);
+      for (var y = 1; y < divideByY; y++) { // 上下两个顶点不需要计算，因为只有一个点
+        var circle = [];
+        var yValue = radius * Math.sin(-(Math.PI / 2) + yUnitAngle * y); // 该层的圆的y轴坐标 -(Math.PI / 4)从底部开始算
+        var yRadius = radius * Math.sin(yUnitAngle * y); // 该层切圆的半径
+        for (var i = 0; i < divideByCircle; i++) {
+          var xValue = yRadius * Math.cos(i * angle); // 该顶点的x轴坐标
+          var zValue = yRadius * Math.sin(i * angle); // 该顶点的z轴坐标
+          circle.push([xValue, yValue, zValue]); // 将坐标丢进数组
+        }
+        positions.push(circle);
+      }
+      positions.push([[0, radius, 0]]);
+      // 全部顶点计算完毕
+
+      // 因为一个点存在多次复用，所以采用索引绘制的方式
+      var indices = [];
+      var points = []; // 存储散列的点坐标
+      var pointsCount = 2 + (positions.length - 2) * divideByCircle; // 顶点数，每层顶点个数+上下两个顶点
+      // 开始拼装顶点
+      // 处理底部顶点
+      for (var i = 0; i < divideByCircle; i++) {
+        var a = i + 2;
+        if (i === divideByCircle - 1) {
+          a = a % divideByCircle;
+        }
+        indices.push(0, a, i + 1);
+      }
+      // 处理中间层
+      for (var i = 1; i < positions.length - 2; i++) {
+        var _ = [];
+        for (var j = 0, len = positions[i].length; j < len; j++) {
+          var e = (j === divideByCircle - 1) ? (2 + j) % divideByCircle : (2 + j); // 到切面圆最后面一个点需要处理超出起点的点
+          var a = (i - 1) * divideByCircle + (1 + j); // 组成的四边形的左下角点
+          var b = (i - 1) * divideByCircle + e; // 组成的四边形的右下角点
+          var c = i * divideByCircle + e; // 组成的四边形的右上角点
+          var d = i * divideByCircle + (1 + j); // 组成的四边形的左上角点
+          _.push([a, b, c, a, c, d]);
+          indices.push(a, b, c, a, c, d); // 将四边形拆分成两个三角形然后丢进索引数组
+        }
+      }
+      // 处理顶部顶点
+      for (var i = 0; i < divideByCircle; i++) { // 顶部的点单独处理，这里只有组成单三角形
+        var index = (positions.length - 3) * divideByCircle + 1 + i;
+        var a = index + 1;
+        if (a === pointsCount - 1) {
+          a = pointsCount - 1 - divideByCircle;
+        }
+        indices.push(pointsCount - 1, index, a);
+      }
+      for (var i = 0; i < positions.length; i++) {
+        for (var j = 0; j < positions[i].length; j++) {
+          points = points.concat(positions[i][j], getRandomColor());
+        }
+      }
+      return {
+        points: points,
+        indices: indices,
+      };
+    }
+  </script>
+  <script>
+    var $ambientFactor = document.querySelector('#ambientFactor');
+    var $lightColor = document.querySelector('#lightColor');
+    var $a = document.querySelector('#a');
+    var $b = document.querySelector('#b');
+    var $num = document.querySelector('#num');
+    var glAmbientFactor = 0.9;
+    var _a = 5
+    var _b = 3
+    
+    var glLightColor = {r: 255, g: 255, b: 255};
+    $ambientFactor.addEventListener('input', function(event) {
+      glAmbientFactor = event.target.value;
+    }, false);
+    $lightColor.addEventListener('change', function(event) {
+      glLightColor = getRGBFromColor(event.target.value);
+    }, false);
+  </script>
+  <script>
+    var run = function () {
+      var canvas = document.getElementById('glcanvas');
+      var gl = canvas.getContext('webgl');
+
+      // 创建顶点着色器对象
+      var vertexShader = createShader.call(gl, gl.VERTEX_SHADER, '#vertexShader');
+      // 创建片元着色器对象
+      var fragmentShader = createShader.call(gl, gl.FRAGMENT_SHADER, '#fragmentShader');
+      // 创建着色器程序
+      var program = createProgram.apply(gl, [vertexShader, fragmentShader]);
+      // 获取正交投影矩阵属性
+      var uMatrix = gl.getUniformLocation(program, 'u_Matrix');
+      var uLightColor = gl.getUniformLocation(program, 'u_lightColor'); // 环境光颜色
+      var uAmbientFactor = gl.getUniformLocation(program, 'u_AmbientFactor'); // 环境光强度
+
+      // 启用着色器程序（通常有多个程序) 使用前先启动
+      gl.useProgram(program);
+
+      // 获取顶点着色器的变量
+      var aPosition = gl.getAttribLocation(program, 'a_Position');
+      var aScreenSize = gl.getAttribLocation(program, 'a_Screen_Size');
+      var aColor = gl.getAttribLocation(program, 'a_Color');
+      // 为顶点着色器传递canvas宽高
+      gl.vertexAttrib2f(aScreenSize, canvas.width, canvas.height);
+
+      var infos = createSphere(_b, _a, _a * 2);
+
+      var buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.enableVertexAttribArray(aPosition);
+      gl.enableVertexAttribArray(aColor);
+      // 将顶点数据写入缓冲区
+      gl.vertexAttribPointer(aPosition, 3, gl.FLOAT, false, 28, 0);
+      gl.vertexAttribPointer(aColor, 4, gl.FLOAT, false, 28, 12);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(infos.points), gl.STATIC_DRAW);
+
+      // 创建一个索引缓冲区
+      var indicesBuffer = gl.createBuffer();
+      // 绘制三角形
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indicesBuffer);
+      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(infos.indices), gl.STATIC_DRAW);
+
+      // 计算正交投影矩阵（抄的）
+      var aspect = canvas.width / canvas.height;
+      var projectionMatrix = ortho(-aspect * 4, aspect * 4, -4, 4, 100, -100);
+      var dstMatrix = identity();
+      var tmpMatrix = identity();
+      var angleX = 0;
+      var angleY = 0;
+
+      //隐藏背面
+      gl.enable(gl.CULL_FACE);
+      gl.cullFace(gl.FRONT);
+      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      let touching = false
+      let stepx = 0
+      let stepy = 0
+      // test
+    //   let cameraPosition = new Vector3(0, 0, 10);
+    //   let target = new Vector3(0, 0, -1);
+    //   let up = new Vector3(0, 1, 0);
+    //   let cameraMatrix = lookAt(cameraPosition, target, up);
+    // //   // 从相机矩阵取逆获取视图矩阵。
+    //   let viewMatrix = inverse(cameraMatrix);
+    //   var projectionMatrix = perspective(
+    //     60,
+    //     648 / 448,
+    //     1,
+    //     900
+    //   );
+    //   multiply(projectionMatrix, viewMatrix)
+    //   dstMatrix = viewMatrix
+    // object.uniforms.u_Matrix = matrix.multiply(projectionMatrix, viewMatrix);
+
+      // end
+      // 绘制三角形
+      function draw() {
+        if (!touching && Math.abs(angleX) > 0) {
+          angleX += (angleX < 0 ? 1 : -1) * stepx
+        }
+        if (!touching && Math.abs(angleY) > 0) {
+          angleY += (angleY < 0 ? 1 : -1) * stepy
+        }
+        if (Math.abs(angleX) <= Math.abs(stepx)) {
+          angleX = 0
+        }
+        if (Math.abs(angleY) <= Math.abs(stepy)) {
+          angleY = 0
+        }
+        // angleX += 1;
+        // angleY += 2;
+        // 先绕 Y 轴旋转矩阵。
+        rotationY(deg2radians(angleY), dstMatrix);
+        //再绕 X 轴旋转
+        multiply(dstMatrix, rotationX(deg2radians(angleX), tmpMatrix), dstMatrix);
+        //模型投影矩阵。
+        multiply(projectionMatrix, dstMatrix, dstMatrix);
+        gl.uniformMatrix4fv(uMatrix, false, dstMatrix);
+        gl.uniform3f(uLightColor, glLightColor.r / 255, glLightColor.g / 255, glLightColor.b / 255);
+        gl.uniform1f(uAmbientFactor, glAmbientFactor);
+
+        // 用上一步设置的颜色清空画布
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        /**
+         * @param type 需要绘制的图元的类型
+         * @param count 指定绘制图像的顶点个数
+         * @param type UNSIGNED_BYTE | UNSIGNED_SHORT 无符号（8|16）位整数
+         * @param offset 偏移量
+         **/
+        gl.drawElements(gl.TRIANGLES, infos.indices.length, gl.UNSIGNED_SHORT, 0);
+        if (window._draw) {
+            requestAnimationFrame(window._draw);
+        }
+      }
+      window._draw = draw;
+      draw();
+
+      let startx, starty;
+      window.addEventListener('touchstart', (e) => {
+        touching = true
+        startx = e.touches[0].pageX
+        starty = e.touches[0].pageY
+        stepx = 0
+        stepy = 0
+      })
+      window.addEventListener('touchmove', (e) => {
+        angleY += (startx - e.touches[0].pageX) / 100
+        angleX += (starty - e.touches[0].pageY) / 100
+      })
+      window.addEventListener('touchend', (e) => {
+        touching = false
+        stepx = Math.abs(startx) / 30
+        stepy = Math.abs(starty) / 30
+        startx = 0
+        starty = 0
+      })
+    };
+    run();
+    
+    $a.addEventListener('input', function(event) {
+        _a = event.target.value;
+        $num.innerHTML = _a;
+        run();
+    }, false);
+    $b.addEventListener('input', function(event) {
+        _b = event.target.value;
+        run();
+    }, false);
+  </script>
+</body>
+
+</html>
